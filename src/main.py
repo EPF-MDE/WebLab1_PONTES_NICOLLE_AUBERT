@@ -5,6 +5,8 @@ from fastapi.exception_handlers import RequestValidationError
 from fastapi.exceptions import RequestValidationError as FastAPIRequestValidationError
 
 from .config import settings
+from .api.routes import api_router
+from .models import base, books, users, loans  # Importer les modèles pour Alembic
 from .utils.logger import logger  # importe le logger
 from .utils.exceptions import ItemNotFoundError  # importe ton exception personnalisée
 
@@ -22,6 +24,8 @@ if settings.BACKEND_CORS_ORIGINS:
         allow_headers=["*"],
     )
 
+# Inclusion des routes API
+app.include_router(api_router, prefix=settings.API_V1_STR)
 @app.on_event("startup")
 async def startup_event():
     logger.info("Application démarrée")  # log au démarrage
