@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings
-from pydantic import AnyHttpUrl
-from typing import List, Optional, Union
+from pydantic import AnyHttpUrl, ConfigDict
+from typing import List
 import secrets
 
 
@@ -16,9 +16,10 @@ class Settings(BaseSettings):
     # Base de données
     DATABASE_URL: str = "sqlite:///./library.db"
 
-    class Config:
-        case_sensitive = True
-        env_file = ".env"
+    model_config = ConfigDict(
+        case_sensitive=True,
+        env_file=".env"
+    )
 
 
 settings = Settings()
