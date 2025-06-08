@@ -33,11 +33,15 @@ class BaseRepository(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         """
         return self.db.query(self.model).offset(skip).limit(limit).all()
 
-    def create(self, *, obj_in: CreateSchemaType) -> ModelType:
+    def create(self, *, obj_in: CreateSchemaType | dict) -> ModelType:
         """
         Crée un nouvel objet.
         """
-        obj_in_data = jsonable_encoder(obj_in)
+        # Si obj_in est déjà un dict (comme dans LoanService), ne pas encoder
+        if isinstance(obj_in, dict):
+            obj_in_data = obj_in
+        else:
+            obj_in_data = obj_in.model_dump() if hasattr(obj_in, "model_dump") else obj_in.dict()
         db_obj = self.model(**obj_in_data)
         self.db.add(db_obj)
         self.db.commit()

@@ -1,10 +1,11 @@
 from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy.orm import relationship
-
 from .base import Base
 
 
 class Book(Base):
+    __tablename__ = "books"
+    id = Column(Integer, primary_key=True, index=True)
     title = Column(String(100), nullable=False, index=True)
     author = Column(String(100), nullable=False, index=True)
     isbn = Column(String(13), nullable=False, unique=True, index=True)
@@ -14,3 +15,4 @@ class Book(Base):
 
     # Relations
     loans = relationship("Loan", back_populates="book", cascade="all, delete-orphan")
+    reservations = relationship("Reservation", back_populates="book", cascade="all, delete-orphan")

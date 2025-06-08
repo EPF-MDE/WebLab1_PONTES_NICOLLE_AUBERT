@@ -2,11 +2,12 @@ from sqlalchemy.orm import Session
 from typing import List
 from datetime import datetime
 
+from src.models.loans import Loan
+from src.api.schemas.loans import LoanCreate, LoanUpdate
 from .base import BaseRepository
-from ..models.loans import Loan
 
 
-class LoanRepository(BaseRepository[Loan, None, None]):
+class LoanRepository(BaseRepository[Loan, LoanCreate, LoanUpdate]):
     def get_active_loans(self) -> List[Loan]:
         """
         Récupère les emprunts actifs (non retournés).
@@ -17,10 +18,9 @@ class LoanRepository(BaseRepository[Loan, None, None]):
         """
         Récupère les emprunts en retard.
         """
-        now = datetime.utcnow()
-        return self.db.query(Loan).filter(
-            Loan.return_date == None,
-            Loan.due_date < now
+        return self.db.query(self.model).filter(
+            self.model.due_date < datetime.utcnow(),
+            self.model.return_date == None
         ).all()
 
     def get_loans_by_user(self, *, user_id: int) -> List[Loan]:
