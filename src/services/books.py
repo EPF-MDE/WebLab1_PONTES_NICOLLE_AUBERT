@@ -5,6 +5,7 @@ from src.utils.logger import logger
 
 from ..repositories.books import BookRepository
 from ..models.books import Book
+from ..models.categories import Category
 from ..api.schemas.books import BookCreate, BookUpdate
 from .base import BaseService
 
@@ -16,6 +17,7 @@ class BookService(BaseService[Book, BookCreate, BookUpdate]):
     def __init__(self, repository: BookRepository):
         super().__init__(repository)
         self.repository = repository
+        self.db = repository.db
 
     def get_by_isbn(self, *, isbn: str) -> Optional[Book]:
         """
@@ -44,7 +46,23 @@ class BookService(BaseService[Book, BookCreate, BookUpdate]):
         if existing_book:
             raise ValueError("L'ISBN est déjà utilisé")
 
-        return self.repository.create(obj_in=obj_in)
+        # Extraire les category_ids
+        category_ids = getattr(obj_in, "category_ids", None)
+        # Créer le livre sans category_ids
+        book_data = obj_in.dict(exclude={"category_ids"})
+        book = Book(**book_data)
+        self.db.add(book)
+        self.db.commit()
+        self.db.refresh(book)
+
+        # Ajouter les catégories si besoin
+        if category_ids:
+            categories = self.db.query(Category).filter(Category.id.in_(category_ids)).all()
+            book.categories = categories
+            self.db.commit()
+            self.db.refresh(book)
+
+        return book
 
     def update_quantity(self, *, book_id: int, quantity_change: int) -> Book:
         """
