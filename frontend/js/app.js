@@ -18,7 +18,7 @@ const App = {
     // Charge une page spécifique
     loadPage: function(page) {
         // Vérifier si la page nécessite une authentification
-        const authRequiredPages = ['books', 'profile'];
+        const authRequiredPages = ['books', 'profile', 'loans'];
         if (authRequiredPages.includes(page) && !Auth.isAuthenticated()) {
             UI.showMessage('Vous devez être connecté pour accéder à cette page', 'error');
             page = 'login';
@@ -40,6 +40,9 @@ const App = {
                 break;
             case 'change-password':
                 this.loadChangePasswordPage();
+                break;
+            case 'loans':
+                this.loadLoansPage();
                 break;
             default:
                 this.loadLoginPage();
@@ -328,11 +331,28 @@ const App = {
                         <h3>Description</h3>
                         <p>${book.description || 'Aucune description disponible.'}</p>
                     </div>
+                    ${book.quantity > 0 ? `<button class="btn" id="borrow-btn">Emprunter ce livre</button>` : `<span class="text-danger">Indisponible</span>`}
                     <button class="btn mt-20" onclick="App.loadPage('books')">Retour à la liste</button>
                 </div>
             `;
 
             UI.setContent(html);
+
+            // Dans App.viewBookDetails, après UI.setContent(html);
+            if (book.quantity > 0) {
+                const borrowBtn = document.getElementById('borrow-btn');
+                if (borrowBtn) {
+                    borrowBtn.addEventListener('click', async () => {
+                        try {
+                            await Api.borrowBook(book.id);
+                            UI.showMessage('Livre emprunté avec succès !', 'success');
+                            App.loadPage('loans');
+                        } catch (error) {
+                            // L'erreur est déjà affichée par Api.call
+                        }
+                    });
+                }
+            }
         } catch (error) {
             console.error('Erreur lors du chargement des détails du livre:', error);
             UI.setContent(`
@@ -612,6 +632,58 @@ const App = {
             App.loadBooksPage();
         });
         document.getElementById('sort-by').value = sortBy;
+    },
+
+    // Charge la page des emprunts
+    loadLoansPage: async function() {
+        UI.showLoading();
+        try {
+            const loans = await Api.getUserLoans();
+            let html = `
+                <h2 class="mb-20">Mes emprunts</h2>
+                <div class="card-container">
+            `;
+            if (!loans || loans.length === 0) {
+                html += `<p>Vous n'avez aucun emprunt en cours.</p>`;
+            } else {
+                loans.forEach(loan => {
+                    html += `
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>${loan.book.title}</h3>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Auteur:</strong> ${loan.book.author}</p>
+                                <p><strong>Date d'emprunt:</strong> ${new Date(loan.loan_date).toLocaleDateString()}</p>
+                                <p><strong>À rendre avant:</strong> ${new Date(loan.due_date).toLocaleDateString()}</p>
+                                <p><strong>Statut:</strong> ${loan.return_date ? "Rendu" : "En cours"}</p>
+                            </div>
+                            <div class="card-footer">
+                                ${!loan.return_date ? `<button class="btn" onclick="App.returnLoan(${loan.id})">Retourner</button>` : ""}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            html += `</div>
+                <button class="btn mt-20" onclick="App.loadPage('books')">Retour aux livres</button>
+            `;
+            UI.setContent(html);
+        } catch (error) {
+            UI.setContent(`<p>Erreur lors du chargement des emprunts.</p>`);
+        } finally {
+            UI.hideLoading();
+        }
+    },
+
+    returnLoan: async function(loanId) {
+        try {
+            await Api.returnLoan(loanId);
+            UI.showMessage('Livre retourné avec succès !', 'success');
+            App.loadLoansPage();
+        } catch (error) {
+            // L'erreur est déjà affichée par Api.call
+        }
     },
 };
 

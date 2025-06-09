@@ -10398,3 +10398,393 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-09 17:05:55,787 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
 2025-06-09 17:05:55,789 [INFO] src.utils.pagination: Total items in query: 8
 2025-06-09 17:05:55,791 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:23:30,541 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:23:30,622 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:23:30,627 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:23:32,842 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:23:34,143 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:23:34,145 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:23:34,146 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:23:46,769 [INFO] src.api.routes.auth: Login attempt for user: admin@example.com
+2025-06-09 18:23:46,771 [INFO] src.repositories.users: Utilisateur trouvé: <User(email=admin@example.com, full_name=Admin User)>
+2025-06-09 18:23:46,772 [WARNING] passlib.handlers.bcrypt: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\lpnts\AppData\Roaming\Python\Python312\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-06-09 18:23:47,159 [INFO] src.utils.security: Password verification succeeded.
+2025-06-09 18:23:47,160 [INFO] src.services.users: Authentification réussie pour l'utilisateur: admin@example.com
+2025-06-09 18:23:47,160 [INFO] src.utils.security: Access token created for subject: 3
+2025-06-09 18:23:47,161 [INFO] src.api.routes.auth: User admin@example.com authenticated successfully
+2025-06-09 18:23:47,176 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:23:47,179 [INFO] src.api.routes.users: Fetching current user: id=3
+2025-06-09 18:23:47,200 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:23:47,202 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:23:47,203 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:23:49,699 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:23:49,701 [INFO] src.api.routes.books: Fetching book with ID: 2
+2025-06-09 18:23:49,701 [INFO] src.services.base: Getting object with id=2
+2025-06-09 18:23:59,920 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:23:59,921 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:24:02,362 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:24:02,363 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:02,364 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:24:02,382 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:24:02,384 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:02,389 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:24:05,236 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-09 18:24:05,238 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:05,241 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:24:06,670 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:24:06,671 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:06,673 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:24:07,782 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-09 18:24:07,784 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:07,786 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:24:08,366 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:24:08,368 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:08,369 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:24:10,078 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=publication_year, sort_desc=False
+2025-06-09 18:24:10,080 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:10,083 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:24:11,773 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-09 18:24:11,775 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:11,777 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:24:15,901 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:24:15,905 [INFO] src.api.routes.books: Advanced search: query=None, category_id=None, author=None, publication_year=1
+2025-06-09 18:24:15,915 [INFO] src.utils.pagination: Total items in query: 0
+2025-06-09 18:24:15,921 [INFO] src.utils.pagination: Returning page 1/0 with size 10
+2025-06-09 18:24:20,572 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:24:20,575 [INFO] src.api.routes.books: Advanced search: query=s, category_id=None, author=None, publication_year=None
+2025-06-09 18:24:20,582 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:20,584 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:24:25,059 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:24:25,062 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:24:33,185 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-09 18:24:33,187 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:33,189 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:24:33,212 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-09 18:24:33,215 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:24:33,217 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:25:02,238 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:25:02,242 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:25:15,273 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:25:15,281 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:25:28,337 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:25:28,372 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:26:02,563 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-09 18:26:02,564 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:26:02,566 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-09 18:26:02,566 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:26:02,569 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:26:02,573 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:26:05,040 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:26:05,042 [INFO] src.api.routes.books: Fetching book with ID: 8
+2025-06-09 18:26:05,043 [INFO] src.services.base: Getting object with id=8
+2025-06-09 18:29:09,114 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:29:09,217 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:29:09,222 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:29:10,974 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:29:10,975 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:29:10,976 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:29:12,748 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:29:14,244 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:29:14,246 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:29:14,247 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:29:16,454 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:29:19,911 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:29:21,057 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:29:21,060 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:29:21,063 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:29:22,818 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:29:22,824 [INFO] src.api.routes.books: Fetching book with ID: 2
+2025-06-09 18:29:22,827 [INFO] src.services.base: Getting object with id=2
+2025-06-09 18:29:23,911 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:29:23,919 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=3, book_id=2
+2025-06-09 18:29:23,923 [INFO] src.repositories.loans: Fetching active loans (not returned)
+2025-06-09 18:29:23,957 [INFO] src.repositories.base: Created new Loan with id=3
+2025-06-09 18:29:23,960 [INFO] src.services.loans: Emprunt créé avec succès pour user_id=3, book_id=2, loan_id=3
+2025-06-09 18:29:23,965 [INFO] src.repositories.books: Mise à jour du livre ID 2
+2025-06-09 18:29:23,989 [INFO] src.repositories.base: Updated Book with id=2
+2025-06-09 18:29:23,989 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-09 18:29:23,990 [INFO] src.services.loans: Quantité du livre 2 mise à jour à 3
+2025-06-09 18:29:24,022 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:29:26,392 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:29:37,873 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:29:37,892 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:29:37,956 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:29:39,760 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:29:39,764 [INFO] src.api.routes.books: Fetching book with ID: 2
+2025-06-09 18:29:39,764 [INFO] src.services.base: Getting object with id=2
+2025-06-09 18:29:40,481 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:29:40,483 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=3, book_id=2
+2025-06-09 18:29:40,485 [INFO] src.repositories.loans: Fetching active loans (not returned)
+2025-06-09 18:29:40,486 [WARNING] src.services.loans: L'utilisateur 3 a déjà emprunté le livre 2 et ne l'a pas encore rendu
+2025-06-09 18:32:54,084 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:32:54,147 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:32:54,155 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:32:55,237 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:32:56,892 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:32:56,894 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:32:56,896 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:32:58,356 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:33:00,962 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:33:00,964 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:33:00,965 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:33:02,558 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:33:02,563 [INFO] src.api.routes.books: Fetching book with ID: 6
+2025-06-09 18:33:02,564 [INFO] src.services.base: Getting object with id=6
+2025-06-09 18:33:03,855 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:33:03,859 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=3, book_id=6
+2025-06-09 18:33:03,861 [INFO] src.repositories.loans: Fetching active loans (not returned)
+2025-06-09 18:33:03,882 [INFO] src.repositories.base: Created new Loan with id=4
+2025-06-09 18:33:03,883 [INFO] src.services.loans: Emprunt créé avec succès pour user_id=3, book_id=6, loan_id=4
+2025-06-09 18:33:03,886 [INFO] src.repositories.books: Mise à jour du livre ID 6
+2025-06-09 18:33:03,903 [INFO] src.repositories.base: Updated Book with id=6
+2025-06-09 18:33:03,903 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-09 18:33:03,904 [INFO] src.services.loans: Quantité du livre 6 mise à jour à 1
+2025-06-09 18:33:03,928 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:34:06,853 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:36:09,803 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:36:09,811 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:36:09,814 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:36:18,032 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:36:18,086 [INFO] src.api.routes.books: Fetching book with ID: 2
+2025-06-09 18:36:18,089 [INFO] src.services.base: Getting object with id=2
+2025-06-09 18:37:57,078 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:37:57,169 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:37:57,176 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:37:59,243 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:02,872 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:38:02,875 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:38:02,878 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:38:04,122 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:05,484 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:05,489 [INFO] src.api.routes.loans: Admin 3 returns loan 3
+2025-06-09 18:38:05,489 [INFO] src.services.loans: Tentative de retour de l'emprunt 3
+2025-06-09 18:38:05,512 [INFO] src.repositories.base: Updated Loan with id=3
+2025-06-09 18:38:05,513 [INFO] src.services.loans: Emprunt 3 marqué comme retourné
+2025-06-09 18:38:05,516 [INFO] src.repositories.books: Mise à jour du livre ID 2
+2025-06-09 18:38:05,536 [INFO] src.repositories.base: Updated Book with id=2
+2025-06-09 18:38:05,536 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-09 18:38:05,537 [INFO] src.services.loans: Quantité du livre 2 mise à jour à 4
+2025-06-09 18:38:05,537 [INFO] src.api.routes.loans: Loan 3 marked as returned
+2025-06-09 18:38:05,562 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:07,231 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:07,251 [INFO] src.api.routes.loans: Admin 3 returns loan 4
+2025-06-09 18:38:07,261 [INFO] src.services.loans: Tentative de retour de l'emprunt 4
+2025-06-09 18:38:07,335 [INFO] src.repositories.base: Updated Loan with id=4
+2025-06-09 18:38:07,345 [INFO] src.services.loans: Emprunt 4 marqué comme retourné
+2025-06-09 18:38:07,352 [INFO] src.repositories.books: Mise à jour du livre ID 6
+2025-06-09 18:38:07,419 [INFO] src.repositories.base: Updated Book with id=6
+2025-06-09 18:38:07,427 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-09 18:38:07,431 [INFO] src.services.loans: Quantité du livre 6 mise à jour à 2
+2025-06-09 18:38:07,435 [INFO] src.api.routes.loans: Loan 4 marked as returned
+2025-06-09 18:38:07,472 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:08,693 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:09,904 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:38:09,908 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:38:09,913 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:38:10,991 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:16,026 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:38:16,028 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:38:16,030 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:38:18,195 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:18,199 [INFO] src.api.routes.books: Fetching book with ID: 6
+2025-06-09 18:38:18,200 [INFO] src.services.base: Getting object with id=6
+2025-06-09 18:38:19,082 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:19,087 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=3, book_id=6
+2025-06-09 18:38:19,090 [INFO] src.repositories.loans: Fetching active loans (not returned)
+2025-06-09 18:38:19,109 [INFO] src.repositories.base: Created new Loan with id=5
+2025-06-09 18:38:19,110 [INFO] src.services.loans: Emprunt créé avec succès pour user_id=3, book_id=6, loan_id=5
+2025-06-09 18:38:19,113 [INFO] src.repositories.books: Mise à jour du livre ID 6
+2025-06-09 18:38:19,129 [INFO] src.repositories.base: Updated Book with id=6
+2025-06-09 18:38:19,130 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-09 18:38:19,130 [INFO] src.services.loans: Quantité du livre 6 mise à jour à 1
+2025-06-09 18:38:19,151 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:20,085 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:22,175 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:22,179 [INFO] src.api.routes.loans: Admin 3 returns loan 5
+2025-06-09 18:38:22,180 [INFO] src.services.loans: Tentative de retour de l'emprunt 5
+2025-06-09 18:38:22,202 [INFO] src.repositories.base: Updated Loan with id=5
+2025-06-09 18:38:22,204 [INFO] src.services.loans: Emprunt 5 marqué comme retourné
+2025-06-09 18:38:22,207 [INFO] src.repositories.books: Mise à jour du livre ID 6
+2025-06-09 18:38:22,222 [INFO] src.repositories.base: Updated Book with id=6
+2025-06-09 18:38:22,223 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-09 18:38:22,223 [INFO] src.services.loans: Quantité du livre 6 mise à jour à 2
+2025-06-09 18:38:22,223 [INFO] src.api.routes.loans: Loan 5 marked as returned
+2025-06-09 18:38:22,248 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:38:53,118 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:38:53,119 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:38:53,120 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:39:11,116 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:39:11,118 [INFO] src.api.routes.books: Fetching book with ID: 2
+2025-06-09 18:39:11,119 [INFO] src.services.base: Getting object with id=2
+2025-06-09 18:39:34,143 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:39:39,821 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:39:39,822 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:39:39,823 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:39:45,304 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-09 18:39:45,306 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:39:45,308 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:39:47,001 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-09 18:39:47,003 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:39:47,006 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:39:48,579 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-09 18:39:48,581 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:39:48,582 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:40:07,966 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:40:07,969 [INFO] src.api.routes.books: Fetching book with ID: 7
+2025-06-09 18:40:07,970 [INFO] src.services.base: Getting object with id=7
+2025-06-09 18:40:14,308 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-09 18:40:14,310 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:40:14,311 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:42:19,599 [INFO] src.repositories.books: Création d'un nouveau livre
+2025-06-09 18:42:19,629 [INFO] src.repositories.books: Livre créé avec ID 1
+2025-06-09 18:42:19,639 [INFO] src.repositories.books: Création d'un nouveau livre
+2025-06-09 18:42:19,642 [INFO] src.repositories.books: Livre créé avec ID 1
+2025-06-09 18:42:19,650 [INFO] src.repositories.books: Création d'un nouveau livre
+2025-06-09 18:42:19,653 [INFO] src.repositories.books: Livre créé avec ID 1
+2025-06-09 18:42:19,653 [INFO] src.repositories.books: Création d'un nouveau livre
+2025-06-09 18:42:19,656 [INFO] src.repositories.books: Livre créé avec ID 2
+2025-06-09 18:42:19,656 [INFO] src.repositories.books: Création d'un nouveau livre
+2025-06-09 18:42:19,658 [INFO] src.repositories.books: Livre créé avec ID 3
+2025-06-09 18:42:19,675 [INFO] src.repositories.base: Created new Category with id=1
+2025-06-09 18:42:19,676 [INFO] src.repositories.base: Created new Category with id=2
+2025-06-09 18:42:19,676 [INFO] src.repositories.books: Création d'un nouveau livre
+2025-06-09 18:42:19,678 [INFO] src.repositories.books: Livre créé avec ID 1
+2025-06-09 18:42:19,681 [INFO] src.repositories.books: Ajout de la catégorie ID 1 au livre ID 1
+2025-06-09 18:42:19,693 [INFO] src.repositories.books: Catégorie ID 1 ajoutée au livre ID 1
+2025-06-09 18:42:19,697 [INFO] src.repositories.books: Ajout de la catégorie ID 2 au livre ID 1
+2025-06-09 18:42:19,701 [INFO] src.repositories.books: Catégorie ID 2 ajoutée au livre ID 1
+2025-06-09 18:42:19,708 [INFO] src.repositories.books: Suppression de la catégorie ID 1 du livre ID 1
+2025-06-09 18:42:19,713 [INFO] src.repositories.books: Catégorie ID 1 supprimée du livre ID 1
+2025-06-09 18:42:19,722 [ERROR] src.repositories.base: Erreur lors de la mise à jour de DummyModel : Erreur DB
+2025-06-09 18:42:19,724 [ERROR] src.repositories.base: Erreur lors de la suppression de DummyModel : Objet non trouvé
+2025-06-09 18:42:19,727 [ERROR] src.repositories.base: Erreur lors de la suppression de DummyModel : Erreur DB
+2025-06-09 18:42:19,743 [INFO] src.repositories.base: Created new Loan with id=1
+2025-06-09 18:42:19,758 [INFO] src.repositories.base: Created new Loan with id=1
+2025-06-09 18:42:19,758 [INFO] src.repositories.loans: Fetching active loans (not returned)
+2025-06-09 18:42:19,775 [INFO] src.repositories.base: Created new Loan with id=1
+2025-06-09 18:42:19,776 [INFO] src.repositories.loans: Fetching overdue loans at 2025-06-09 16:42:19.776307
+2025-06-09 18:42:19,792 [INFO] src.repositories.base: Created new Loan with id=1
+2025-06-09 18:42:19,793 [INFO] src.repositories.loans: Fetching loans for user_id=1
+2025-06-09 18:42:19,807 [INFO] src.repositories.base: Created new Loan with id=1
+2025-06-09 18:42:19,808 [INFO] src.repositories.loans: Fetching loans for book_id=1
+2025-06-09 18:42:19,820 [INFO] src.repositories.base: Created new Loan with id=1
+2025-06-09 18:42:19,822 [INFO] src.repositories.base: Removed Loan with id=1
+2025-06-09 18:42:19,829 [INFO] src.repositories.loans: Fetching active loans (not returned)
+2025-06-09 18:42:19,830 [ERROR] src.repositories.loans: Erreur lors de la récupération des emprunts actifs : Erreur DB
+2025-06-09 18:42:19,835 [ERROR] src.repositories.base: Erreur lors de la création : Erreur DB
+2025-06-09 18:42:19,838 [ERROR] src.repositories.base: Erreur lors de la suppression de Loan : Erreur DB
+2025-06-09 18:42:19,849 [INFO] src.repositories.base: Created new User with id=1
+2025-06-09 18:42:19,858 [INFO] src.repositories.users: Utilisateur trouvé: <User(email=findme@example.com, full_name=Find Me)>
+2025-06-09 18:42:19,869 [INFO] src.repositories.base: Updated User with id=1
+2025-06-09 18:42:19,882 [INFO] src.repositories.base: Removed User with id=1
+2025-06-09 18:42:19,889 [INFO] src.services.books: Tentative de création d'un livre avec ISBN: 1234567890123
+2025-06-09 18:42:19,890 [INFO] src.services.books: Recherche du livre avec ISBN: 1234567890123
+2025-06-09 18:42:19,891 [INFO] src.repositories.books: Création d'un nouveau livre
+2025-06-09 18:42:19,893 [INFO] src.repositories.books: Livre créé avec ID 1
+2025-06-09 18:42:19,893 [INFO] src.services.books: Livre créé avec succès: <Book(title='Test Book', author='Test Author', isbn='1234567890123')>
+2025-06-09 18:42:19,903 [INFO] src.services.base: Getting object with id=1
+2025-06-09 18:42:19,907 [INFO] src.services.base: Getting object with id=999
+2025-06-09 18:42:19,918 [INFO] src.services.base: Updating object <Book(title='Original Title', author='Original Author', isbn='1234567890123')> with data: title='Updated Title' author='Updated Author' isbn=None publication_year=None description=None quantity=10 publisher=None language=None pages=None category_ids=None
+2025-06-09 18:42:19,919 [INFO] src.repositories.books: Mise à jour du livre ID 1
+2025-06-09 18:42:19,922 [INFO] src.repositories.base: Updated Book with id=1
+2025-06-09 18:42:19,922 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-09 18:42:19,928 [INFO] src.services.base: Removing object with id=1
+2025-06-09 18:42:19,929 [INFO] src.repositories.books: Suppression du livre ID 1
+2025-06-09 18:42:19,935 [INFO] src.repositories.base: Removed Book with id=1
+2025-06-09 18:42:19,936 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-09 18:42:19,936 [INFO] src.services.base: Getting object with id=1
+2025-06-09 18:42:19,943 [INFO] src.services.books: Recherche des livres avec l'auteur contenant: Test Author for Search
+2025-06-09 18:42:19,954 [INFO] src.services.books: Recherche de livres avec le terme: Python
+2025-06-09 18:42:19,962 [INFO] src.services.users: Tentative de création d'un utilisateur avec l'email: a@a.com
+2025-06-09 18:42:19,963 [WARNING] src.services.users: Création échouée: l'email a@a.com est déjà utilisé.
+2025-06-09 18:42:19,967 [INFO] src.services.users: Tentative de création d'un utilisateur avec l'email: a@a.com
+2025-06-09 18:42:19,968 [WARNING] passlib.handlers.bcrypt: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\lpnts\AppData\Roaming\Python\Python312\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-06-09 18:42:20,402 [INFO] src.utils.security: Password hashed successfully.
+2025-06-09 18:42:20,404 [ERROR] src.services.users: Erreur lors de la création de l'utilisateur: Erreur création
+2025-06-09 18:42:20,406 [WARNING] src.services.users: Authentification échouée: utilisateur notfound@a.com non trouvé.
+2025-06-09 18:42:20,408 [INFO] src.services.books: Tentative de création d'un livre avec ISBN: 123
+2025-06-09 18:42:20,408 [WARNING] src.services.books: Échec de création: ISBN déjà utilisé (123)
+2025-06-09 18:42:20,410 [INFO] src.services.base: Getting multiple objects with skip=0, limit=100
+2025-06-09 18:42:20,410 [ERROR] src.services.base: Error getting multiple objects: Erreur multi
+2025-06-09 18:42:20,412 [INFO] src.services.base: Updating object None with data: {}
+2025-06-09 18:42:20,412 [ERROR] src.services.base: Error updating object: Erreur update
+2025-06-09 18:42:20,414 [INFO] src.services.base: Removing object with id=1
+2025-06-09 18:42:20,415 [ERROR] src.services.base: Error removing object with id=1: Erreur remove
+2025-06-09 18:42:20,418 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=999, book_id=1
+2025-06-09 18:42:20,418 [ERROR] src.services.loans: Utilisateur avec l'ID 999 non trouvé
+2025-06-09 18:42:20,420 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=1, book_id=999
+2025-06-09 18:42:20,420 [ERROR] src.services.loans: Livre avec l'ID 999 non trouvé
+2025-06-09 18:42:20,422 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=1, book_id=1
+2025-06-09 18:42:20,423 [WARNING] src.services.loans: Le livre 1 n'est pas disponible pour l'emprunt
+2025-06-09 18:42:20,425 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=1, book_id=1
+2025-06-09 18:42:20,425 [WARNING] src.services.loans: L'utilisateur 1 est inactif et ne peut pas emprunter de livres
+2025-06-09 18:42:20,427 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=1, book_id=1
+2025-06-09 18:42:20,428 [INFO] src.services.loans: Emprunt créé avec succès pour user_id=1, book_id=1, loan_id=42
+2025-06-09 18:42:20,428 [INFO] src.services.loans: Quantité du livre 1 mise à jour à 1
+2025-06-09 18:42:20,433 [INFO] src.services.loans: Tentative de retour de l'emprunt 10
+2025-06-09 18:42:20,433 [INFO] src.services.loans: Emprunt 10 marqué comme retourné
+2025-06-09 18:42:20,434 [INFO] src.services.loans: Quantité du livre 1 mise à jour à 3
+2025-06-09 18:42:20,436 [INFO] src.services.loans: Tentative de retour de l'emprunt 10
+2025-06-09 18:42:20,436 [WARNING] src.services.loans: L'emprunt 10 a déjà été retourné
+2025-06-09 18:42:20,440 [INFO] src.services.loans: Tentative de prolongation de l'emprunt 10
+2025-06-09 18:42:20,441 [INFO] src.services.loans: Nouvelle date d'échéance pour l'emprunt 10: 2025-06-23 16:42:20.440780
+2025-06-09 18:42:20,443 [INFO] src.services.loans: Tentative de prolongation de l'emprunt 10
+2025-06-09 18:42:20,443 [WARNING] src.services.loans: L'emprunt 10 a déjà été prolongé
+2025-06-09 18:42:20,455 [INFO] src.services.users: Tentative de création d'un utilisateur avec l'email: test@example.com
+2025-06-09 18:42:20,456 [WARNING] src.repositories.users: Aucun utilisateur trouvé avec l'email: test@example.com
+2025-06-09 18:42:20,811 [INFO] src.utils.security: Password hashed successfully.
+2025-06-09 18:42:20,813 [INFO] src.repositories.base: Created new User with id=1
+2025-06-09 18:42:20,813 [INFO] src.services.users: Utilisateur créé avec succès: test@example.com
+2025-06-09 18:42:20,817 [INFO] src.services.users: Tentative de création d'un utilisateur avec l'email: auth@example.com
+2025-06-09 18:42:20,818 [WARNING] src.repositories.users: Aucun utilisateur trouvé avec l'email: auth@example.com
+2025-06-09 18:42:21,165 [INFO] src.utils.security: Password hashed successfully.
+2025-06-09 18:42:21,167 [INFO] src.repositories.base: Created new User with id=1
+2025-06-09 18:42:21,167 [INFO] src.services.users: Utilisateur créé avec succès: auth@example.com
+2025-06-09 18:42:21,168 [INFO] src.repositories.users: Utilisateur trouvé: <User(email=auth@example.com, full_name=Auth User)>
+2025-06-09 18:42:21,478 [INFO] src.utils.security: Password verification succeeded.
+2025-06-09 18:42:21,478 [INFO] src.services.users: Authentification réussie pour l'utilisateur: auth@example.com
+2025-06-09 18:42:21,479 [INFO] src.repositories.users: Utilisateur trouvé: <User(email=auth@example.com, full_name=Auth User)>
+2025-06-09 18:42:21,782 [WARNING] src.utils.security: Password verification failed.
+2025-06-09 18:42:21,782 [WARNING] src.services.users: Authentification échouée: mot de passe incorrect pour auth@example.com.
+2025-06-09 18:42:21,783 [WARNING] src.repositories.users: Aucun utilisateur trouvé avec l'email: nonexistent@example.com
+2025-06-09 18:42:21,784 [WARNING] src.services.users: Authentification échouée: utilisateur nonexistent@example.com non trouvé.
+2025-06-09 18:42:21,787 [INFO] src.services.users: Tentative de création d'un utilisateur avec l'email: update@example.com
+2025-06-09 18:42:21,787 [WARNING] src.repositories.users: Aucun utilisateur trouvé avec l'email: update@example.com
+2025-06-09 18:42:22,065 [INFO] src.utils.security: Password hashed successfully.
+2025-06-09 18:42:22,066 [INFO] src.repositories.base: Created new User with id=1
+2025-06-09 18:42:22,066 [INFO] src.services.users: Utilisateur créé avec succès: update@example.com
+2025-06-09 18:42:22,067 [INFO] src.services.base: Updating object <User(email=update@example.com, full_name=Update User)> with data: {'full_name': 'Updated Name'}
+2025-06-09 18:42:22,067 [INFO] src.repositories.base: Updated User with id=1
+2025-06-09 18:42:22,067 [INFO] src.services.users: Utilisateur mis à jour: update@example.com
+2025-06-09 18:42:22,339 [INFO] src.utils.security: Password hashed successfully.
+2025-06-09 18:42:22,339 [INFO] src.services.base: Updating object <User(email=update@example.com, full_name=Updated Name)> with data: {'hashed_password': '$2b$12$bi70yw78JExtP9GP97.vQOj9IMqVyn1yp2YiowHeNqCmPFhiDrwXW'}
+2025-06-09 18:42:22,340 [INFO] src.repositories.base: Updated User with id=1
+2025-06-09 18:42:22,341 [INFO] src.services.users: Utilisateur mis à jour: update@example.com
+2025-06-09 18:42:22,341 [INFO] src.repositories.users: Utilisateur trouvé: <User(email=update@example.com, full_name=Updated Name)>
+2025-06-09 18:42:22,672 [INFO] src.utils.security: Password verification succeeded.
+2025-06-09 18:42:22,672 [INFO] src.services.users: Authentification réussie pour l'utilisateur: update@example.com
+2025-06-09 18:42:22,675 [INFO] src.services.users: Tentative de création d'un utilisateur avec l'email: get@example.com
+2025-06-09 18:42:22,677 [WARNING] src.repositories.users: Aucun utilisateur trouvé avec l'email: get@example.com
+2025-06-09 18:42:23,055 [INFO] src.utils.security: Password hashed successfully.
+2025-06-09 18:42:23,057 [INFO] src.repositories.base: Created new User with id=1
+2025-06-09 18:42:23,057 [INFO] src.services.users: Utilisateur créé avec succès: get@example.com
+2025-06-09 18:42:23,058 [INFO] src.repositories.users: Utilisateur trouvé: <User(email=get@example.com, full_name=Get User)>
+2025-06-09 18:42:23,059 [WARNING] src.repositories.users: Aucun utilisateur trouvé avec l'email: nonexistent@example.com
+2025-06-09 18:42:23,062 [INFO] src.services.users: Tentative de création d'un utilisateur avec l'email: duplicate@example.com
+2025-06-09 18:42:23,063 [WARNING] src.repositories.users: Aucun utilisateur trouvé avec l'email: duplicate@example.com
+2025-06-09 18:42:23,417 [INFO] src.utils.security: Password hashed successfully.
+2025-06-09 18:42:23,419 [INFO] src.repositories.base: Created new User with id=1
+2025-06-09 18:42:23,419 [INFO] src.services.users: Utilisateur créé avec succès: duplicate@example.com
+2025-06-09 18:42:23,419 [INFO] src.services.users: Tentative de création d'un utilisateur avec l'email: duplicate@example.com
+2025-06-09 18:42:23,420 [INFO] src.repositories.users: Utilisateur trouvé: <User(email=duplicate@example.com, full_name=Duplicate User)>
+2025-06-09 18:42:23,420 [WARNING] src.services.users: Création échouée: l'email duplicate@example.com est déjà utilisé.

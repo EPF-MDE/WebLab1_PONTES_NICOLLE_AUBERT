@@ -3,12 +3,13 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List, Any
 from datetime import datetime, timedelta
+from pydantic import BaseModel
 
 from ...db.session import get_db
 from ...models.loans import Loan as LoanModel
 from ...models.books import Book as BookModel
 from ...models.users import User as UserModel
-from ..schemas.loans import Loan, LoanCreate, LoanUpdate
+from ..schemas.loans import Loan, LoanCreate, LoanUpdate, LoanWithDetails
 from ...repositories.loans import LoanRepository
 from ...repositories.books import BookRepository
 from ...repositories.users import UserRepository
@@ -20,61 +21,46 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
+class LoanRequest(BaseModel):
+    book_id: int
+    loan_period_days: int = 14
 
-@router.get("/", response_model=List[Loan])
-def read_loans(
+
+@router.get("/me", response_model=List[LoanWithDetails])
+def get_my_loans(
     db: Session = Depends(get_db),
-    skip: int = 0,
-    limit: int = 100,
-    current_user = Depends(get_current_admin_user)
-) -> Any:
-    logger.info(f"Admin {current_user.id} requested all loans (skip={skip}, limit={limit})")
-    loan_repository = LoanRepository(LoanModel, db)
-    book_repository = BookRepository(BookModel, db)
-    user_repository = UserRepository(UserModel, db)
-    service = LoanService(loan_repository, book_repository, user_repository)
-    try:
-        loans = service.get_multi(skip=skip, limit=limit)
-        logger.debug(f"Found {len(loans)} loans")
-        return loans
-    except CustomException as e:
-        logger.error(f"Error fetching loans: {e}")
-        raise HTTPException(status_code=e.status_code, detail=e.message)
-    except Exception as e:
-        logger.error(f"Unexpected error fetching loans: {e}")
-        raise HTTPException(status_code=500, detail="Erreur lors de la récupération des emprunts")
+    current_user: UserModel = Depends(get_current_active_user)
+):
+    from sqlalchemy.orm import joinedload
+    loans = db.query(LoanModel).options(joinedload(LoanModel.book)).filter(LoanModel.user_id == current_user.id).all()
+    return loans
 
 
-@router.post("/", response_model=Loan, status_code=status.HTTP_201_CREATED)
-def create_loan(
+@router.post("/me", response_model=Loan, status_code=status.HTTP_201_CREATED)
+def create_my_loan(
     *,
     db: Session = Depends(get_db),
-    user_id: int,
-    book_id: int,
-    loan_period_days: int = 14,
-    current_user = Depends(get_current_admin_user)
-) -> Any:
-    logger.info(f"Admin {current_user.id} creates loan for user {user_id} and book {book_id}")
+    data: LoanRequest,
+    current_user = Depends(get_current_active_user)
+):
     loan_repository = LoanRepository(LoanModel, db)
     book_repository = BookRepository(BookModel, db)
     user_repository = UserRepository(UserModel, db)
     service = LoanService(loan_repository, book_repository, user_repository)
     try:
         loan = service.create_loan(
-            user_id=user_id,
-            book_id=book_id,
-            loan_period_days=loan_period_days
+            user_id=current_user.id,
+            book_id=data.book_id,
+            loan_period_days=data.loan_period_days
         )
-        logger.info(f"Loan created: {loan.id}")
         return loan
     except CustomException as e:
-        logger.error(f"Error creating loan: {e}")
         raise HTTPException(status_code=e.status_code, detail=e.message)
     except Exception as e:
-        logger.error(f"Unexpected error creating loan: {e}")
         raise HTTPException(status_code=500, detail="Erreur lors de la création de l'emprunt")
 
 
+# --- ENSUITE seulement les routes dynamiques ---
 @router.get("/{id}", response_model=Loan)
 def read_loan(
     *,

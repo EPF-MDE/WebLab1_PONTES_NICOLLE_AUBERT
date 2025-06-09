@@ -123,4 +123,16 @@ const Api = {
             new_password: newPassword
         });
     },
+
+    getUserLoans: async function() {
+        return this.call('/loans/me');
+    },
+
+    borrowBook: async function(bookId) {
+        return this.call('/loans/me', 'POST', { book_id: bookId });
+    },
+
+    returnLoan: async function(loanId) {
+        return this.call(`/loans/${loanId}/return`, 'POST');
+    },
 };
