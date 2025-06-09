@@ -116,4 +116,11 @@ const Api = {
             .join('&');
         return this.call(`/books/search/?${query}`);
     },
+
+    changePassword: async function(currentPassword, newPassword) {
+        return this.call('/users/me/change-password', 'POST', {
+            current_password: currentPassword,
+            new_password: newPassword
+        });
+    },
 };

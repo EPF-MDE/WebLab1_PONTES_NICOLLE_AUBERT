@@ -2,6 +2,7 @@ import logging
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List, Any
+from pydantic import BaseModel
 
 from ...db.session import get_db
 from ...models.users import User as UserModel
@@ -10,6 +11,7 @@ from ...repositories.users import UserRepository
 from ...services.users import UserService
 from ..dependencies import get_current_active_user, get_current_admin_user
 from src.exceptions import CustomException  # Ajout de l'import
+from ...utils.security import verify_password, get_password_hash
 
 logger = logging.getLogger(__name__)
 
@@ -249,3 +251,26 @@ def get_user_by_email(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Erreur lors de la récupération de l'utilisateur par email"
         )
+
+
+class ChangePasswordRequest(BaseModel):
+    current_password: str
+    new_password: str
+
+
+@router.post("/me/change-password")
+def change_password(
+    data: ChangePasswordRequest,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_active_user)
+):
+    """
+    Permet à l'utilisateur connecté de changer son mot de passe.
+    """
+    # Vérifie l'ancien mot de passe
+    if not verify_password(data.current_password, current_user.hashed_password):
+        raise HTTPException(status_code=400, detail="Mot de passe actuel incorrect")
+    # Met à jour le mot de passe
+    current_user.hashed_password = get_password_hash(data.new_password)
+    db.commit()
+    return {"message": "Mot de passe changé avec succès"}

@@ -38,6 +38,9 @@ const App = {
             case 'profile':
                 this.loadProfilePage();
                 break;
+            case 'change-password':
+                this.loadChangePasswordPage();
+                break;
             default:
                 this.loadLoginPage();
         }
@@ -386,15 +389,18 @@ const App = {
                         </div>
                     </div>
                     <button class="btn" id="edit-profile-btn">Modifier le profil</button>
+                    <button class="btn" id="change-password-btn">Changer le mot de passe</button>
                 </div>
             `;
 
             UI.setContent(html);
-            UI.hideLoading(); // <-- AJOUTE CETTE LIGNE
+            UI.hideLoading();
 
-            // Configurer le bouton de modification du profil
             document.getElementById('edit-profile-btn').addEventListener('click', () => {
                 this.loadEditProfilePage(user);
+            });
+            document.getElementById('change-password-btn').addEventListener('click', () => {
+                this.loadPage('change-password');
             });
         } catch (error) {
             console.error('Erreur lors du chargement du profil:', error);
@@ -450,6 +456,52 @@ const App = {
                 this.loadPage('profile');
             } catch (error) {
                 console.error('Erreur lors de la mise à jour du profil:', error);
+            }
+        });
+    },
+
+    // Charge la page de changement de mot de passe
+    loadChangePasswordPage: function() {
+        const html = `
+            <div class="form-container">
+                <h2 class="text-center mb-20">Changer le mot de passe</h2>
+                <form id="change-password-form">
+                    <div class="form-group">
+                        <label for="current_password">Mot de passe actuel</label>
+                        <input type="password" id="current_password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new_password">Nouveau mot de passe</label>
+                        <input type="password" id="new_password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_new_password">Confirmer le nouveau mot de passe</label>
+                        <input type="password" id="confirm_new_password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-block">Changer le mot de passe</button>
+                </form>
+                <button class="btn btn-block mt-20" onclick="App.loadPage('profile')">Annuler</button>
+            </div>
+        `;
+        UI.setContent(html);
+
+        document.getElementById('change-password-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const currentPassword = document.getElementById('current_password').value;
+            const newPassword = document.getElementById('new_password').value;
+            const confirmNewPassword = document.getElementById('confirm_new_password').value;
+
+            if (newPassword !== confirmNewPassword) {
+                UI.showMessage('Les nouveaux mots de passe ne correspondent pas', 'error');
+                return;
+            }
+
+            try {
+                await Api.changePassword(currentPassword, newPassword);
+                UI.showMessage('Mot de passe changé avec succès', 'success');
+                App.loadPage('profile');
+            } catch (error) {
+                // L'erreur est déjà affichée par Api.changePassword
             }
         });
     },
