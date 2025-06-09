@@ -9,7 +9,7 @@ const UI = {
         message: document.getElementById('message'),
         navLinks: document.querySelectorAll('.nav-link'),
         authRequired: document.querySelectorAll('.auth-required'),
-        logoutLink: document.getElementById('logout-link')
+        logoutLink: document.getElementById('logout-link'),
     },
 
     // Initialisation de l'interface
@@ -37,6 +37,8 @@ const UI = {
             App.loadPage('login');
             this.showMessage('Vous avez été déconnecté avec succès', 'success');
         });
+
+        // PAS de gestion de pagination/tri ici !
     },
 
     // Mise à jour de la navigation en fonction de l'état d'authentification
@@ -84,5 +86,11 @@ const UI = {
     // Charge le contenu HTML dans la page
     setContent: function(html) {
         this.elements.pageContent.innerHTML = html;
+    },
+
+    // Définit le critère de tri
+    setSortBy: function(sortBy) {
+        const select = document.getElementById('sort-by');
+        if (select) select.value = sortBy;
     }
 };

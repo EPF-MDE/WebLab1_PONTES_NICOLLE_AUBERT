@@ -178,10 +178,34 @@ const App = {
         UI.showLoading();
 
         try {
-            const books = await Api.getBooks();
+            const params = {
+                skip: (currentPage - 1) * 10,
+                limit: 10,
+                sort_by: sortBy,
+                sort_desc: sortDesc,
+                ...lastSearchParams // pour garder les filtres de recherche
+            };
+            const books = await Api.getBooks(params);
+            const page = books.page;
+            const pages = books.pages;
 
             let html = `
                 <h2 class="mb-20">Catalogue de Livres</h2>
+                <form id="search-form" class="mb-20">
+                    <input type="text" id="search-query" placeholder="Titre, auteur, ISBN..." class="form-control" style="width:200px;display:inline-block;">
+                    <input type="text" id="search-author" placeholder="Auteur" class="form-control" style="width:150px;display:inline-block;">
+                    <input type="number" id="search-year" placeholder="Année" class="form-control" style="width:100px;display:inline-block;">
+                    <button type="submit" class="btn">Rechercher</button>
+                </form>
+                <div class="mb-20">
+                    <label for="sort-by">Trier par :</label>
+                    <select id="sort-by" class="form-control" style="width:150px;display:inline-block;">
+                        <option value="title">Titre</option>
+                        <option value="author">Auteur</option>
+                        <option value="publication_year">Année</option>
+                    </select>
+                    <button id="sort-dir" class="btn" type="button">${sortDesc ? "⬇️" : "⬆️"}</button>
+                </div>
                 <div class="card-container">
             `;
 
@@ -208,9 +232,70 @@ const App = {
                 });
             }
 
-            html += `</div>`;
+            html += `</div>
+    <div class="pagination">
+        <button id="prev-page" class="btn" ${page <= 1 ? 'disabled' : ''}>Précédent</button>
+        <span>Page ${page} / ${pages}</span>
+        <button id="next-page" class="btn" ${page >= pages ? 'disabled' : ''}>Suivant</button>
+    </div>
+`;
 
             UI.setContent(html);
+
+            // Recherche
+            document.getElementById('search-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const query = document.getElementById('search-query').value;
+                const author = document.getElementById('search-author').value;
+                const publication_year = document.getElementById('search-year').value;
+
+                lastSearchParams = {};
+                if (query) lastSearchParams.query = query;
+                if (author) lastSearchParams.author = author;
+                if (publication_year) lastSearchParams.publication_year = publication_year;
+                currentPage = 1;
+                // Utilise searchBooks si au moins un champ est rempli, sinon getBooks
+                if (query || author || publication_year) {
+                    const books = await Api.searchBooks({
+                        ...lastSearchParams,
+                        skip: 0,
+                        limit: 10,
+                        sort_by: sortBy,
+                        sort_desc: sortDesc
+                    });
+                    App.renderBooks(books); // Crée une méthode pour afficher les livres (voir plus bas)
+                } else {
+                    App.loadBooksPage();
+                }
+            });
+
+            // Pagination
+            document.getElementById('prev-page').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    App.loadBooksPage();
+                }
+            });
+            document.getElementById('next-page').addEventListener('click', () => {
+                if (currentPage < pages) {
+                    currentPage++;
+                    App.loadBooksPage();
+                }
+            });
+
+            // Tri
+            document.getElementById('sort-by').addEventListener('change', (e) => {
+                sortBy = e.target.value;
+                currentPage = 1;
+                App.loadBooksPage();
+            });
+            document.getElementById('sort-dir').addEventListener('click', () => {
+                sortDesc = !sortDesc;
+                currentPage = 1;
+                App.loadBooksPage();
+            });
+            document.getElementById('sort-by').value = sortBy;
+
         } catch (error) {
             console.error('Erreur lors du chargement des livres:', error);
             UI.setContent(`<p>Erreur lors du chargement des livres. Veuillez réessayer.</p>`);
@@ -367,8 +452,122 @@ const App = {
                 console.error('Erreur lors de la mise à jour du profil:', error);
             }
         });
-    }
+    },
+
+    // Affiche les livres recherchés
+    renderBooks: function(books) {
+        const page = books.page || 1;
+        const pages = books.pages || 1;
+        let html = `
+            <h2 class="mb-20">Résultats de la recherche</h2>
+            <form id="search-form" class="mb-20">
+                <input type="text" id="search-query" placeholder="Titre, auteur, ISBN..." class="form-control" style="width:200px;display:inline-block;">
+                <input type="text" id="search-author" placeholder="Auteur" class="form-control" style="width:150px;display:inline-block;">
+                <input type="number" id="search-year" placeholder="Année" class="form-control" style="width:100px;display:inline-block;">
+                <button type="submit" class="btn">Rechercher</button>
+            </form>
+            <div class="mb-20">
+                <label for="sort-by">Trier par :</label>
+                <select id="sort-by" class="form-control" style="width:150px;display:inline-block;">
+                    <option value="title">Titre</option>
+                    <option value="author">Auteur</option>
+                    <option value="publication_year">Année</option>
+                </select>
+                <button id="sort-dir" class="btn" type="button">${sortDesc ? "⬇️" : "⬆️"}</button>
+            </div>
+            <div class="card-container">
+        `;
+
+        if (!books.items || books.items.length === 0) {
+            html += `<p>Aucun résultat trouvé.</p>`;
+        } else {
+            books.items.forEach(book => {
+                html += `
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>${book.title}</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Auteur:</strong> ${book.author}</p>
+                            <p><strong>ISBN:</strong> ${book.isbn}</p>
+                            <p><strong>Année:</strong> ${book.publication_year}</p>
+                            <p><strong>Disponible:</strong> ${book.quantity} exemplaire(s)</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn" onclick="App.viewBookDetails(${book.id})">Voir détails</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        html += `</div>
+            <div class="pagination">
+                <button id="prev-page" class="btn" ${page <= 1 ? 'disabled' : ''}>Précédent</button>
+                <span>Page ${page} / ${pages}</span>
+                <button id="next-page" class="btn" ${page >= pages ? 'disabled' : ''}>Suivant</button>
+            </div>
+        `;
+
+        UI.setContent(html);
+
+        // Réattache les handlers comme dans loadBooksPage
+        document.getElementById('search-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const query = document.getElementById('search-query').value;
+            const author = document.getElementById('search-author').value;
+            const publication_year = document.getElementById('search-year').value;
+
+            lastSearchParams = {};
+            if (query) lastSearchParams.query = query;
+            if (author) lastSearchParams.author = author;
+            if (publication_year) lastSearchParams.publication_year = publication_year;
+            currentPage = 1;
+            if (query || author || publication_year) {
+                const books = await Api.searchBooks({
+                    ...lastSearchParams,
+                    skip: 0,
+                    limit: 10,
+                    sort_by: sortBy,
+                    sort_desc: sortDesc
+                });
+                App.renderBooks(books);
+            } else {
+                App.loadBooksPage();
+            }
+        });
+
+        document.getElementById('prev-page').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                App.loadBooksPage();
+            }
+        });
+        document.getElementById('next-page').addEventListener('click', () => {
+            if (currentPage < pages) {
+                currentPage++;
+                App.loadBooksPage();
+            }
+        });
+        document.getElementById('sort-by').addEventListener('change', (e) => {
+            sortBy = e.target.value;
+            currentPage = 1;
+            App.loadBooksPage();
+        });
+        document.getElementById('sort-dir').addEventListener('click', () => {
+            sortDesc = !sortDesc;
+            currentPage = 1;
+            App.loadBooksPage();
+        });
+        document.getElementById('sort-by').value = sortBy;
+    },
 };
+
+// Variables globales pour la pagination et le tri
+let currentPage = 1;
+let sortBy = "title";
+let sortDesc = false;
+let lastSearchParams = {};
 
 // Initialiser l'application au chargement de la page
 document.addEventListener('DOMContentLoaded', () => {

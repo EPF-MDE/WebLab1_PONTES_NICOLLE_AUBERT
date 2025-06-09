@@ -97,11 +97,23 @@ const Api = {
         }
     },
 
-    getBooks: async function(skip = 0, limit = 100) {
-        return this.call(`/books/?skip=${skip}&limit=${limit}`);
+    getBooks: async function(params = {}) {
+        let query = Object.entries(params)
+            .filter(([_, v]) => v !== undefined && v !== "")
+            .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+            .join('&');
+        return this.call(`/books/?${query}`);
     },
 
     getBook: async function(id) {
         return this.call(`/books/${id}`);
-    }
+    },
+
+    searchBooks: async function(params = {}) {
+        let query = Object.entries(params)
+            .filter(([_, v]) => v !== undefined && v !== "")
+            .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+            .join('&');
+        return this.call(`/books/search/?${query}`);
+    },
 };
