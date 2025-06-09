@@ -1,20 +1,27 @@
+import logging
 from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime
 
+logger = logging.getLogger(__name__)
 
 class CategoryBase(BaseModel):
     name: str = Field(..., min_length=1, max_length=50, description="Nom de la catégorie")
     description: Optional[str] = Field(None, max_length=200, description="Description de la catégorie")
 
+    def __init__(self, **data):
+        super().__init__(**data)
+        logger.debug(f"CategoryBase created with data: {data}")
 
 class CategoryCreate(CategoryBase):
     pass
 
-
 class CategoryUpdate(CategoryBase):
     name: Optional[str] = Field(None, min_length=1, max_length=50, description="Nom de la catégorie")
 
+    def __init__(self, **data):
+        super().__init__(**data)
+        logger.debug(f"CategoryUpdate created with data: {data}")
 
 class CategoryInDBBase(CategoryBase):
     id: int
@@ -24,10 +31,12 @@ class CategoryInDBBase(CategoryBase):
     class Config:
         from_attributes = True
 
+    def __init__(self, **data):
+        super().__init__(**data)
+        logger.debug(f"CategoryInDBBase created with data: {data}")
 
 class Category(CategoryInDBBase):
     pass
-
 
 class BookBase(BaseModel):
     title: str = Field(..., min_length=1, max_length=100, description="Titre du livre")
@@ -40,10 +49,16 @@ class BookBase(BaseModel):
     language: Optional[str] = Field(None, max_length=50, description="Langue du livre")
     pages: Optional[int] = Field(None, gt=0, description="Nombre de pages")
 
+    def __init__(self, **data):
+        super().__init__(**data)
+        logger.debug(f"BookBase created with data: {data}")
 
 class BookCreate(BookBase):
     category_ids: Optional[List[int]] = Field(None, description="IDs des catégories")
 
+    def __init__(self, **data):
+        super().__init__(**data)
+        logger.debug(f"BookCreate created with data: {data}")
 
 class BookUpdate(BaseModel):
     title: Optional[str] = Field(None, min_length=1, max_length=100, description="Titre du livre")
@@ -57,6 +72,9 @@ class BookUpdate(BaseModel):
     pages: Optional[int] = Field(None, gt=0, description="Nombre de pages")
     category_ids: Optional[List[int]] = Field(None, description="IDs des catégories")
 
+    def __init__(self, **data):
+        super().__init__(**data)
+        logger.debug(f"BookUpdate created with data: {data}")
 
 class BookInDBBase(BookBase):
     id: int
@@ -64,8 +82,15 @@ class BookInDBBase(BookBase):
     updated_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
+    def __init__(self, **data):
+        super().__init__(**data)
+        logger.debug(f"BookInDBBase created with data: {data}")
 
 class Book(BookInDBBase):
     categories: List[Category] = []
+
+    def __init__(self, **data):
+        super().__init__(**data)
+        logger.debug(f"Book created with data: {data}")

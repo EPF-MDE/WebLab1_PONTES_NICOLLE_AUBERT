@@ -1,8 +1,10 @@
+import logging
 from sqlalchemy import Column, Integer, DateTime
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
 from datetime import datetime
 import re
 
+logger = logging.getLogger(__name__)
 
 @as_declarative()
 class Base:
@@ -14,4 +16,6 @@ class Base:
     @declared_attr
     def __tablename__(cls) -> str:
         # Convert CamelCase to snake_case
-        return re.sub(r'(?<!^)(?=[A-Z])', '_', cls.__name__).lower()
+        tablename = re.sub(r'(?<!^)(?=[A-Z])', '_', cls.__name__).lower()
+        logger.debug(f"Generated tablename '{tablename}' for class '{cls.__name__}'")
+        return tablename

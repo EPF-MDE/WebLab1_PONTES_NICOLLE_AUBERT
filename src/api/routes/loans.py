@@ -1,3 +1,4 @@
+import logging
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List, Any
@@ -13,6 +14,9 @@ from ...repositories.books import BookRepository
 from ...repositories.users import UserRepository
 from ...services.loans import LoanService
 from ..dependencies import get_current_active_user, get_current_admin_user
+from src.exceptions import CustomException  # Ajout de l'import
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -24,15 +28,21 @@ def read_loans(
     limit: int = 100,
     current_user = Depends(get_current_admin_user)
 ) -> Any:
-    """
-    Récupère la liste des emprunts.
-    """
+    logger.info(f"Admin {current_user.id} requested all loans (skip={skip}, limit={limit})")
     loan_repository = LoanRepository(LoanModel, db)
     book_repository = BookRepository(BookModel, db)
     user_repository = UserRepository(UserModel, db)
     service = LoanService(loan_repository, book_repository, user_repository)
-    loans = service.get_multi(skip=skip, limit=limit)
-    return loans
+    try:
+        loans = service.get_multi(skip=skip, limit=limit)
+        logger.debug(f"Found {len(loans)} loans")
+        return loans
+    except CustomException as e:
+        logger.error(f"Error fetching loans: {e}")
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+    except Exception as e:
+        logger.error(f"Unexpected error fetching loans: {e}")
+        raise HTTPException(status_code=500, detail="Erreur lors de la récupération des emprunts")
 
 
 @router.post("/", response_model=Loan, status_code=status.HTTP_201_CREATED)
@@ -44,26 +54,25 @@ def create_loan(
     loan_period_days: int = 14,
     current_user = Depends(get_current_admin_user)
 ) -> Any:
-    """
-    Crée un nouvel emprunt.
-    """
+    logger.info(f"Admin {current_user.id} creates loan for user {user_id} and book {book_id}")
     loan_repository = LoanRepository(LoanModel, db)
     book_repository = BookRepository(BookModel, db)
     user_repository = UserRepository(UserModel, db)
     service = LoanService(loan_repository, book_repository, user_repository)
-
     try:
         loan = service.create_loan(
             user_id=user_id,
             book_id=book_id,
             loan_period_days=loan_period_days
         )
+        logger.info(f"Loan created: {loan.id}")
         return loan
-    except ValueError as e:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
-        )
+    except CustomException as e:
+        logger.error(f"Error creating loan: {e}")
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+    except Exception as e:
+        logger.error(f"Unexpected error creating loan: {e}")
+        raise HTTPException(status_code=500, detail="Erreur lors de la création de l'emprunt")
 
 
 @router.get("/{id}", response_model=Loan)
@@ -73,29 +82,26 @@ def read_loan(
     id: int,
     current_user = Depends(get_current_active_user)
 ) -> Any:
-    """
-    Récupère un emprunt par son ID.
-    """
+    logger.info(f"User {current_user.id} requests loan {id}")
     loan_repository = LoanRepository(LoanModel, db)
     book_repository = BookRepository(BookModel, db)
     user_repository = UserRepository(UserModel, db)
     service = LoanService(loan_repository, book_repository, user_repository)
-
-    loan = service.get(id=id)
-    if not loan:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Emprunt non trouvé"
-        )
-
-    # Vérifier que l'utilisateur est l'emprunteur ou un administrateur
-    if not current_user.is_admin and current_user.id != loan.user_id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Accès non autorisé"
-        )
-
-    return loan
+    try:
+        loan = service.get(id=id)
+        if not loan:
+            logger.warning(f"Loan {id} not found")
+            raise CustomException("Emprunt non trouvé", status_code=status.HTTP_404_NOT_FOUND)
+        if not current_user.is_admin and current_user.id != loan.user_id:
+            logger.warning(f"User {current_user.id} forbidden to access loan {id}")
+            raise CustomException("Accès non autorisé", status_code=status.HTTP_403_FORBIDDEN)
+        logger.debug(f"Loan {id} returned to user {current_user.id}")
+        return loan
+    except CustomException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+    except Exception as e:
+        logger.error(f"Unexpected error fetching loan {id}: {e}")
+        raise HTTPException(status_code=500, detail="Erreur lors de la récupération de l'emprunt")
 
 
 @router.post("/{id}/return", response_model=Loan)
@@ -105,22 +111,21 @@ def return_loan(
     id: int,
     current_user = Depends(get_current_admin_user)
 ) -> Any:
-    """
-    Marque un emprunt comme retourné.
-    """
+    logger.info(f"Admin {current_user.id} returns loan {id}")
     loan_repository = LoanRepository(LoanModel, db)
     book_repository = BookRepository(BookModel, db)
     user_repository = UserRepository(UserModel, db)
     service = LoanService(loan_repository, book_repository, user_repository)
-
     try:
         loan = service.return_loan(loan_id=id)
+        logger.info(f"Loan {id} marked as returned")
         return loan
-    except ValueError as e:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
-        )
+    except CustomException as e:
+        logger.error(f"Error returning loan {id}: {e}")
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+    except Exception as e:
+        logger.error(f"Unexpected error returning loan {id}: {e}")
+        raise HTTPException(status_code=500, detail="Erreur lors du retour de l'emprunt")
 
 
 @router.post("/{id}/extend", response_model=Loan)
@@ -131,22 +136,21 @@ def extend_loan(
     extension_days: int = 7,
     current_user = Depends(get_current_admin_user)
 ) -> Any:
-    """
-    Prolonge la durée d'un emprunt.
-    """
+    logger.info(f"Admin {current_user.id} extends loan {id} by {extension_days} days")
     loan_repository = LoanRepository(LoanModel, db)
     book_repository = BookRepository(BookModel, db)
     user_repository = UserRepository(UserModel, db)
     service = LoanService(loan_repository, book_repository, user_repository)
-
     try:
         loan = service.extend_loan(loan_id=id, extension_days=extension_days)
+        logger.info(f"Loan {id} extended by {extension_days} days")
         return loan
-    except ValueError as e:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
-        )
+    except CustomException as e:
+        logger.error(f"Error extending loan {id}: {e}")
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+    except Exception as e:
+        logger.error(f"Unexpected error extending loan {id}: {e}")
+        raise HTTPException(status_code=500, detail="Erreur lors de la prolongation de l'emprunt")
 
 
 @router.get("/active/", response_model=List[Loan])
@@ -154,16 +158,21 @@ def read_active_loans(
     db: Session = Depends(get_db),
     current_user = Depends(get_current_admin_user)
 ) -> Any:
-    """
-    Récupère les emprunts actifs (non retournés).
-    """
+    logger.info(f"Admin {current_user.id} requests active loans")
     loan_repository = LoanRepository(LoanModel, db)
     book_repository = BookRepository(BookModel, db)
     user_repository = UserRepository(UserModel, db)
     service = LoanService(loan_repository, book_repository, user_repository)
-
-    loans = service.get_active_loans()
-    return loans
+    try:
+        loans = service.get_active_loans()
+        logger.debug(f"Found {len(loans)} active loans")
+        return loans
+    except CustomException as e:
+        logger.error(f"Error fetching active loans: {e}")
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+    except Exception as e:
+        logger.error(f"Unexpected error fetching active loans: {e}")
+        raise HTTPException(status_code=500, detail="Erreur lors de la récupération des emprunts actifs")
 
 
 @router.get("/overdue/", response_model=List[Loan])
@@ -171,16 +180,21 @@ def read_overdue_loans(
     db: Session = Depends(get_db),
     current_user = Depends(get_current_admin_user)
 ) -> Any:
-    """
-    Récupère les emprunts en retard.
-    """
+    logger.info(f"Admin {current_user.id} requests overdue loans")
     loan_repository = LoanRepository(LoanModel, db)
     book_repository = BookRepository(BookModel, db)
     user_repository = UserRepository(UserModel, db)
     service = LoanService(loan_repository, book_repository, user_repository)
-
-    loans = service.get_overdue_loans()
-    return loans
+    try:
+        loans = service.get_overdue_loans()
+        logger.debug(f"Found {len(loans)} overdue loans")
+        return loans
+    except CustomException as e:
+        logger.error(f"Error fetching overdue loans: {e}")
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+    except Exception as e:
+        logger.error(f"Unexpected error fetching overdue loans: {e}")
+        raise HTTPException(status_code=500, detail="Erreur lors de la récupération des emprunts en retard")
 
 
 @router.get("/user/{user_id}", response_model=List[Loan])
@@ -190,23 +204,27 @@ def read_user_loans(
     user_id: int,
     current_user = Depends(get_current_active_user)
 ) -> Any:
-    """
-    Récupère les emprunts d'un utilisateur.
-    """
-    # Vérifier que l'utilisateur est l'emprunteur ou un administrateur
     if not current_user.is_admin and current_user.id != user_id:
+        logger.warning(f"User {current_user.id} forbidden to access loans of user {user_id}")
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Accès non autorisé"
         )
-
+    logger.info(f"User {current_user.id} requests loans for user {user_id}")
     loan_repository = LoanRepository(LoanModel, db)
     book_repository = BookRepository(BookModel, db)
     user_repository = UserRepository(UserModel, db)
     service = LoanService(loan_repository, book_repository, user_repository)
-
-    loans = service.get_loans_by_user(user_id=user_id)
-    return loans
+    try:
+        loans = service.get_loans_by_user(user_id=user_id)
+        logger.debug(f"Found {len(loans)} loans for user {user_id}")
+        return loans
+    except CustomException as e:
+        logger.error(f"Error fetching loans for user {user_id}: {e}")
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+    except Exception as e:
+        logger.error(f"Unexpected error fetching loans for user {user_id}: {e}")
+        raise HTTPException(status_code=500, detail="Erreur lors de la récupération des emprunts de l'utilisateur")
 
 
 @router.get("/book/{book_id}", response_model=List[Loan])
@@ -216,13 +234,18 @@ def read_book_loans(
     book_id: int,
     current_user = Depends(get_current_admin_user)
 ) -> Any:
-    """
-    Récupère les emprunts d'un livre.
-    """
+    logger.info(f"Admin {current_user.id} requests loans for book {book_id}")
     loan_repository = LoanRepository(LoanModel, db)
     book_repository = BookRepository(BookModel, db)
     user_repository = UserRepository(UserModel, db)
     service = LoanService(loan_repository, book_repository, user_repository)
-
-    loans = service.get_loans_by_book(book_id=book_id)
-    return loans
+    try:
+        loans = service.get_loans_by_book(book_id=book_id)
+        logger.debug(f"Found {len(loans)} loans for book {book_id}")
+        return loans
+    except CustomException as e:
+        logger.error(f"Error fetching loans for book {book_id}: {e}")
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+    except Exception as e:
+        logger.error(f"Unexpected error fetching loans for book {book_id}: {e}")
+        raise HTTPException(status_code=500, detail="Erreur lors de la récupération des emprunts du livre")

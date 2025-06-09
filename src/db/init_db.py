@@ -1,4 +1,3 @@
-# src/db/init_db.py
 import logging
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
@@ -30,7 +29,7 @@ def init_db(db: Session) -> None:
         db.add(admin)
         db.commit()
         logger.info("Administrateur créé")
-
+    
     # Créer des catégories
     categories = [
         {"name": "Roman", "description": "Romans littéraires"},
@@ -39,23 +38,23 @@ def init_db(db: Session) -> None:
         {"name": "Biographie", "description": "Biographies et autobiographies"},
         {"name": "Histoire", "description": "Livres d'histoire"},
     ]
-
+    
     for category_data in categories:
         category = db.query(Category).filter(Category.name == category_data["name"]).first()
         if not category:
             category = Category(**category_data)
             db.add(category)
-
+    
     db.commit()
     logger.info("Catégories créées")
-
+    
     # Récupérer les catégories
     roman = db.query(Category).filter(Category.name == "Roman").first()
     sf = db.query(Category).filter(Category.name == "Science-Fiction").first()
     policier = db.query(Category).filter(Category.name == "Policier").first()
     biographie = db.query(Category).filter(Category.name == "Biographie").first()
     histoire = db.query(Category).filter(Category.name == "Histoire").first()
-
+    
     # Créer des livres
     books = [
         {
@@ -107,7 +106,7 @@ def init_db(db: Session) -> None:
             "categories": [biographie]
         },
     ]
-
+    
     for book_data in books:
         categories = book_data.pop("categories")
         book = db.query(Book).filter(Book.isbn == book_data["isbn"]).first()
@@ -115,14 +114,14 @@ def init_db(db: Session) -> None:
             book = Book(**book_data)
             db.add(book)
             db.flush()  # Pour obtenir l'ID du livre
-
+            
             # Ajouter les catégories
             for category in categories:
                 book.categories.append(category)
-
+    
     db.commit()
     logger.info("Livres créés")
-
+    
     # Créer un utilisateur normal
     user = db.query(User).filter(User.email == "user@example.com").first()
     if not user:
@@ -139,11 +138,11 @@ def init_db(db: Session) -> None:
         db.add(user)
         db.commit()
         logger.info("Utilisateur créé")
-
+    
     # Créer des emprunts
     book1 = db.query(Book).filter(Book.isbn == "9780451524935").first()
     book2 = db.query(Book).filter(Book.isbn == "9780618640157").first()
-
+    
     if book1 and book2 and user:
         # Emprunt actif
         loan1 = db.query(Loan).filter(
@@ -151,7 +150,7 @@ def init_db(db: Session) -> None:
             Loan.book_id == book1.id,
             Loan.return_date == None
         ).first()
-
+        
         if not loan1:
             loan1_data = {
                 "user_id": user.id,
@@ -163,18 +162,18 @@ def init_db(db: Session) -> None:
             }
             loan1 = Loan(**loan1_data)
             db.add(loan1)
-
+            
             # Mettre à jour la quantité
             book1.quantity -= 1
             db.add(book1)
-
+        
         # Emprunt retourné
         loan2 = db.query(Loan).filter(
             Loan.user_id == user.id,
             Loan.book_id == book2.id,
             Loan.return_date != None
         ).first()
-
+        
         if not loan2:
             loan2_data = {
                 "user_id": user.id,
@@ -186,6 +185,6 @@ def init_db(db: Session) -> None:
             }
             loan2 = Loan(**loan2_data)
             db.add(loan2)
-
+        
         db.commit()
         logger.info("Emprunts créés")
