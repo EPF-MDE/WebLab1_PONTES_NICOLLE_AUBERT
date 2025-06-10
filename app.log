@@ -10788,3 +10788,278 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-09 18:42:23,419 [INFO] src.services.users: Tentative de création d'un utilisateur avec l'email: duplicate@example.com
 2025-06-09 18:42:23,420 [INFO] src.repositories.users: Utilisateur trouvé: <User(email=duplicate@example.com, full_name=Duplicate User)>
 2025-06-09 18:42:23,420 [WARNING] src.services.users: Création échouée: l'email duplicate@example.com est déjà utilisé.
+2025-06-09 18:44:18,414 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:44:18,422 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:18,424 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:20,825 [INFO] src.services.base: Getting object with id=3
+2025-06-09 18:44:26,325 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:44:26,326 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:26,327 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:27,792 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-09 18:44:27,794 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:27,797 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:29,061 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:44:29,062 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:29,063 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:29,882 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-09 18:44:29,883 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:29,884 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:30,585 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:44:30,587 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:30,588 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:31,196 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-09 18:44:31,198 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:31,199 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:31,629 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:44:31,630 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:31,631 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:31,828 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-09 18:44:31,829 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:31,829 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:32,015 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:44:32,017 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:32,017 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:32,193 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-09 18:44:32,194 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:32,195 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:32,387 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:44:32,389 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:32,390 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:32,561 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-09 18:44:32,562 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:32,563 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:32,741 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-09 18:44:32,743 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:32,746 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-09 18:44:32,910 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-09 18:44:32,917 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-09 18:44:32,944 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:46:37,542 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 11:46:37,609 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:46:37,613 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:46:44,049 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 11:46:44,051 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:46:44,052 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:46:53,511 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-10 11:46:53,512 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:46:53,515 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:46:54,533 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 11:46:54,534 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:46:54,535 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:46:55,160 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-10 11:46:55,162 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:46:55,164 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:46:57,706 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-10 11:46:57,707 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:46:57,708 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:46:59,656 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-10 11:46:59,658 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:46:59,660 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:47:00,169 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-10 11:47:00,171 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:47:00,171 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:47:01,391 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:47:08,348 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-10 11:47:08,350 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:47:08,351 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:47:09,848 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:47:09,850 [INFO] src.api.routes.books: Fetching book with ID: 5
+2025-06-10 11:47:09,850 [INFO] src.services.base: Getting object with id=5
+2025-06-10 11:47:11,455 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:47:11,458 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=3, book_id=5
+2025-06-10 11:47:11,460 [INFO] src.repositories.loans: Fetching active loans (not returned)
+2025-06-10 11:47:11,478 [INFO] src.repositories.base: Created new Loan with id=6
+2025-06-10 11:47:11,479 [INFO] src.services.loans: Emprunt créé avec succès pour user_id=3, book_id=5, loan_id=6
+2025-06-10 11:47:11,481 [INFO] src.repositories.books: Mise à jour du livre ID 5
+2025-06-10 11:47:11,494 [INFO] src.repositories.base: Updated Book with id=5
+2025-06-10 11:47:11,495 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-10 11:47:11,495 [INFO] src.services.loans: Quantité du livre 5 mise à jour à 3
+2025-06-10 11:47:11,506 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:47:13,010 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:47:24,563 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-10 11:47:24,564 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:47:24,566 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:47:26,450 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:47:26,452 [INFO] src.api.routes.books: Fetching book with ID: 1
+2025-06-10 11:47:26,453 [INFO] src.services.base: Getting object with id=1
+2025-06-10 11:47:27,793 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:47:27,796 [INFO] src.services.loans: Tentative de création d'un emprunt pour user_id=3, book_id=1
+2025-06-10 11:47:27,798 [INFO] src.repositories.loans: Fetching active loans (not returned)
+2025-06-10 11:47:27,811 [INFO] src.repositories.base: Created new Loan with id=7
+2025-06-10 11:47:27,811 [INFO] src.services.loans: Emprunt créé avec succès pour user_id=3, book_id=1, loan_id=7
+2025-06-10 11:47:27,812 [INFO] src.repositories.books: Mise à jour du livre ID 1
+2025-06-10 11:47:27,825 [INFO] src.repositories.base: Updated Book with id=1
+2025-06-10 11:47:27,826 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-10 11:47:27,826 [INFO] src.services.loans: Quantité du livre 1 mise à jour à 1
+2025-06-10 11:47:27,838 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:47:32,788 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-10 11:47:32,789 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:47:32,797 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:47:33,996 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:47:33,998 [INFO] src.api.routes.books: Fetching book with ID: 1
+2025-06-10 11:47:33,999 [INFO] src.services.base: Getting object with id=1
+2025-06-10 11:47:56,166 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-10 11:47:56,168 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:47:56,169 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:48:24,542 [INFO] src.api.routes.auth: Login attempt for user: admin@example.com
+2025-06-10 11:48:24,545 [INFO] src.repositories.users: Utilisateur trouvé: <User(email=admin@example.com, full_name=Admin User)>
+2025-06-10 11:48:24,546 [WARNING] passlib.handlers.bcrypt: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\lpnts\OneDrive - Fondation EPF\Documents\epf\matières\4A\Web programming\Lab\Lab1\WebLab1_PONTES_NICOLLE_AUBERT\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-06-10 11:48:24,981 [INFO] src.utils.security: Password verification succeeded.
+2025-06-10 11:48:24,981 [INFO] src.services.users: Authentification réussie pour l'utilisateur: admin@example.com
+2025-06-10 11:48:24,982 [INFO] src.utils.security: Access token created for subject: 3
+2025-06-10 11:48:24,982 [INFO] src.api.routes.auth: User admin@example.com authenticated successfully
+2025-06-10 11:48:25,006 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:48:25,009 [INFO] src.api.routes.users: Fetching current user: id=3
+2025-06-10 11:48:25,021 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-10 11:48:25,022 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:48:25,023 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:48:26,296 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:48:26,314 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:48:28,935 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:48:28,938 [INFO] src.api.routes.loans: Admin 3 returns loan 6
+2025-06-10 11:48:28,939 [INFO] src.services.loans: Tentative de retour de l'emprunt 6
+2025-06-10 11:48:28,957 [INFO] src.repositories.base: Updated Loan with id=6
+2025-06-10 11:48:28,958 [INFO] src.services.loans: Emprunt 6 marqué comme retourné
+2025-06-10 11:48:28,959 [INFO] src.repositories.books: Mise à jour du livre ID 5
+2025-06-10 11:48:28,974 [INFO] src.repositories.base: Updated Book with id=5
+2025-06-10 11:48:28,975 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-10 11:48:28,975 [INFO] src.services.loans: Quantité du livre 5 mise à jour à 4
+2025-06-10 11:48:28,975 [INFO] src.api.routes.loans: Loan 6 marked as returned
+2025-06-10 11:48:28,988 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:48:31,663 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:48:31,666 [INFO] src.api.routes.loans: Admin 3 returns loan 7
+2025-06-10 11:48:31,666 [INFO] src.services.loans: Tentative de retour de l'emprunt 7
+2025-06-10 11:48:31,682 [INFO] src.repositories.base: Updated Loan with id=7
+2025-06-10 11:48:31,682 [INFO] src.services.loans: Emprunt 7 marqué comme retourné
+2025-06-10 11:48:31,685 [INFO] src.repositories.books: Mise à jour du livre ID 1
+2025-06-10 11:48:31,698 [INFO] src.repositories.base: Updated Book with id=1
+2025-06-10 11:48:31,698 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-10 11:48:31,699 [INFO] src.services.loans: Quantité du livre 1 mise à jour à 2
+2025-06-10 11:48:31,699 [INFO] src.api.routes.loans: Loan 7 marked as returned
+2025-06-10 11:48:31,712 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:48:43,398 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-10 11:48:43,405 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:48:43,410 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:48:43,431 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-10 11:48:43,439 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 11:48:43,446 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 11:48:47,795 [INFO] src.services.base: Getting object with id=3
+2025-06-10 11:48:47,809 [INFO] src.services.base: Getting object with id=3
+2025-06-10 13:28:15,481 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 13:28:15,535 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 13:28:15,539 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 13:28:16,472 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 13:28:16,475 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 13:28:16,478 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 13:28:18,505 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 13:28:18,519 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 13:28:18,533 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 13:28:21,660 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 13:28:21,662 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 13:28:21,664 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 13:28:26,099 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 13:28:26,102 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 13:28:26,104 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 13:28:28,858 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 13:28:28,860 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 13:28:28,862 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 13:28:33,782 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 13:28:33,784 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 13:28:33,786 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 13:28:40,492 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 13:28:40,494 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 13:28:40,496 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:13:24,874 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:13:24,928 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:13:24,934 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:13:26,144 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:13:31,034 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:13:31,036 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:13:31,037 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:13:32,087 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:13:39,663 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:13:49,833 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:15:15,464 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:15:15,527 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:15:15,536 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:15:17,940 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:15:17,999 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:19:25,257 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:19:25,364 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:20:17,556 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:20:17,561 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:20:17,565 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:20:21,343 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:20:21,374 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:20:39,250 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:20:39,253 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:20:39,255 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:20:42,019 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:20:42,038 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:20:49,873 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:20:49,876 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:20:49,878 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:20:51,432 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:20:51,454 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:20:55,750 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:20:55,752 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:20:55,754 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:21:02,041 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:21:02,069 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:22:48,650 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:22:48,674 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:22:55,429 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:22:55,444 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:28:41,577 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:28:41,636 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:28:41,642 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:28:42,417 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:28:42,525 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:28:52,969 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:28:52,971 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:28:52,974 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:29:03,537 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:29:03,603 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:29:08,659 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:29:08,661 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:29:08,662 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:40:21,003 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:40:21,021 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:40:21,031 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:40:23,505 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:40:23,535 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:40:29,574 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:40:38,074 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:40:44,407 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:40:47,541 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:40:53,122 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:40:56,773 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:41:07,192 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:45:58,656 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:45:58,755 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:45:58,763 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:46:05,461 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:46:05,521 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:46:06,796 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:46:06,799 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:46:06,801 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:46:12,831 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:46:12,848 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:46:33,660 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:46:33,662 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:46:33,663 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:46:40,689 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:46:40,709 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:46:53,421 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:46:53,423 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-10 14:46:53,424 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-10 14:46:54,781 [INFO] src.services.base: Getting object with id=3
+2025-06-10 14:46:54,783 [INFO] src.api.routes.books: Fetching book with ID: 2
+2025-06-10 14:46:54,784 [INFO] src.services.base: Getting object with id=2
+2025-06-10 14:47:05,919 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-10 14:47:05,922 [INFO] src.utils.pagination: Total items in query: 8

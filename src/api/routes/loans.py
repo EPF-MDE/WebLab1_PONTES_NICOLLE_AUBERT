@@ -1,5 +1,5 @@
 import logging
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 from typing import List, Any
 from datetime import datetime, timedelta
@@ -235,3 +235,27 @@ def read_book_loans(
     except Exception as e:
         logger.error(f"Unexpected error fetching loans for book {book_id}: {e}")
         raise HTTPException(status_code=500, detail="Erreur lors de la récupération des emprunts du livre")
+
+
+from sqlalchemy.orm import joinedload
+
+@router.get("/", response_model=List[LoanWithDetails])
+def read_all_loans(
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_admin_user),
+    user_id: int = Query(None, description="Filtrer par ID utilisateur"),
+    user_name: str = Query(None, description="Filtrer par nom"),
+    user_email: str = Query(None, description="Filtrer par email"),
+    user_address: str = Query(None, description="Filtrer par adresse"),
+):
+    query = db.query(LoanModel).options(joinedload(LoanModel.book), joinedload(LoanModel.user))
+    if user_id:
+        query = query.filter(LoanModel.user_id == user_id)
+    if user_name:
+        query = query.join(LoanModel.user).filter(UserModel.full_name.ilike(f"%{user_name}%"))
+    if user_email:
+        query = query.join(LoanModel.user).filter(UserModel.email.ilike(f"%{user_email}%"))
+    if user_address:
+        query = query.join(LoanModel.user).filter(UserModel.address.ilike(f"%{user_address}%"))
+    loans = query.all()
+    return loans

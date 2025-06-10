@@ -135,4 +135,12 @@ const Api = {
     returnLoan: async function(loanId) {
         return this.call(`/loans/${loanId}/return`, 'POST');
     },
+
+    getAllLoans: async function(params = {}) {
+        let query = Object.entries(params)
+            .filter(([_, v]) => v !== undefined && v !== "")
+            .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+            .join('&');
+        return this.call(`/loans/${query ? '?' + query : ''}`);
+    },
 };
