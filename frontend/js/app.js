@@ -638,53 +638,33 @@ const App = {
     loadLoansPage: async function() {
         UI.showLoading();
         try {
-            const loans = await Api.getUserLoans();
-            let html = `
-                <h2 class="mb-20">Mes emprunts</h2>
-                <div class="card-container">
-            `;
-            if (!loans || loans.length === 0) {
-                html += `<p>Vous n'avez aucun emprunt en cours.</p>`;
-            } else {
-                loans.forEach(loan => {
-                    html += `
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>${loan.book.title}</h3>
-                            </div>
-                            <div class="card-body">
-                                <p><strong>Auteur:</strong> ${loan.book.author}</p>
-                                <p><strong>Date d'emprunt:</strong> ${new Date(loan.loan_date).toLocaleDateString()}</p>
-                                <p><strong>À rendre avant:</strong> ${new Date(loan.due_date).toLocaleDateString()}</p>
-                                <p><strong>Statut:</strong> ${loan.return_date ? "Rendu" : "En cours"}</p>
-                            </div>
-                            <div class="card-footer">
-                                ${!loan.return_date ? `<button class="btn" onclick="App.returnLoan(${loan.id})">Retourner</button>` : ""}
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-            html += `</div>`;
-
-            // --- Section admin ---
             const user = Auth.getUser();
-            if (user && user.is_admin) {
-                // Ajoute un champ de recherche
-                html += `
-                    <h2 class="mb-20">Tous les emprunts (admin)</h2>
-                    <form id="admin-loan-search" class="mb-20">
-                        <input type="number" id="admin-user-id" placeholder="ID utilisateur" class="form-control" style="width:120px;display:inline-block;">
-                        <input type="text" id="admin-user-name" placeholder="Nom" class="form-control" style="width:120px;display:inline-block;">
-                        <input type="text" id="admin-user-email" placeholder="Email" class="form-control" style="width:150px;display:inline-block;">
-                        <input type="text" id="admin-user-address" placeholder="Adresse" class="form-control" style="width:150px;display:inline-block;">
-                        <button type="submit" class="btn">Filtrer</button>
-                    </form>
-                    <div class="card-container" id="admin-loans-list">
-                `;
+            let html = `<h2 class="mb-20">Mes emprunts</h2><div class="card-container">`;
 
-                let allLoans = await Api.getAllLoans();
-                // Fonction utilitaire pour afficher les emprunts admin
+            if (user && user.is_admin) {
+                html = `
+        <h2 class="mb-20">Tous les emprunts</h2>
+        <form id="search-loans-form" class="mb-20">
+            <input type="text" id="search-book" placeholder="Titre du livre" class="form-control" style="width:160px;display:inline-block;">
+            <input type="text" id="search-author" placeholder="Auteur" class="form-control" style="width:120px;display:inline-block;">
+            <input type="text" id="search-user" placeholder="Nom utilisateur" class="form-control" style="width:120px;display:inline-block;">
+            <input type="text" id="search-email" placeholder="Email utilisateur" class="form-control" style="width:150px;display:inline-block;">
+            <button type="submit" class="btn">Rechercher</button>
+        </form>
+        <div class="mb-20">
+            <label for="sort-loans-by">Trier par :</label>
+            <select id="sort-loans-by" class="form-control" style="width:150px;display:inline-block;">
+                <option value="loan_date">Date d'emprunt</option>
+                <option value="due_date">Date de rendu</option>
+                <option value="book_title">Titre du livre</option>
+                <option value="user_name">Nom utilisateur</option>
+            </select>
+            <button id="sort-loans-dir" class="btn" type="button">${sortDesc ? "⬇️" : "⬆️"}</button>
+        </div>
+        <div class="card-container" id="admin-loans-list"></div>
+    `;
+
+                // Fonction d'affichage
                 function renderAdminLoans(loans) {
                     if (!loans || loans.length === 0) {
                         return `<p>Aucun emprunt trouvé.</p>`;
@@ -692,12 +672,80 @@ const App = {
                     let html = '';
                     loans.forEach(loan => {
                         html += `
+                <div class="card">
+                    <div class="card-header">
+                        <h3>${loan.book.title}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Utilisateur:</strong> ${loan.user.full_name} (${loan.user.email})</p>
+                        <p><strong>Auteur:</strong> ${loan.book.author}</p>
+                        <p><strong>Date d'emprunt:</strong> ${new Date(loan.loan_date).toLocaleDateString()}</p>
+                        <p><strong>À rendre avant:</strong> ${new Date(loan.due_date).toLocaleDateString()}</p>
+                        <p><strong>Statut:</strong> ${loan.return_date ? "Rendu" : "En cours"}</p>
+                    </div>
+                    <div class="card-footer">
+                        ${!loan.return_date ? `<button class="btn" onclick="App.returnLoan(${loan.id})">Retourner</button>` : ""}
+                    </div>
+                </div>
+            `;
+                    });
+                    return html;
+                }
+
+                // Fonction pour charger et afficher les emprunts avec filtres/tri
+                async function loadAndRenderLoans() {
+                    let params = {};
+                    const book = document.getElementById('search-book').value;
+                    const author = document.getElementById('search-author').value;
+                    const userName = document.getElementById('search-user').value;
+                    const userEmail = document.getElementById('search-email').value;
+                    params.sort_by = sortBy;
+                    params.sort_desc = sortDesc;
+                    if (book) params.book_title = book;
+                    if (author) params.author = author;
+                    if (userName) params.user_name = userName;
+                    if (userEmail) params.user_email = userEmail;
+                    const loans = await Api.getAllLoans(params);
+                    document.getElementById('admin-loans-list').innerHTML = renderAdminLoans(loans);
+                }
+
+                // Affichage initial
+                setTimeout(() => {
+                    loadAndRenderLoans();
+
+                    document.getElementById('search-loans-form').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        loadAndRenderLoans();
+                    });
+
+                    document.getElementById('sort-loans-by').addEventListener('change', function() {
+                        sortBy = this.value;
+                        loadAndRenderLoans();
+                    });
+                    document.getElementById('sort-loans-dir').addEventListener('click', function() {
+                        sortDesc = !sortDesc;
+                        this.textContent = sortDesc ? "⬇️" : "⬆️";
+                        loadAndRenderLoans();
+                    });
+
+                    // Met à jour la sélection et la flèche au chargement
+                    document.getElementById('sort-loans-by').value = sortBy;
+                    document.getElementById('sort-loans-dir').textContent = sortDesc ? "⬇️" : "⬆️";
+                }, 0);
+
+            } else if (user) {
+                // UTILISATEUR : voir seulement ses emprunts, sans bouton retourner
+                const loans = await Api.getUserLoans();
+                if (!loans || loans.length === 0) {
+                    html += `<p>Vous n'avez aucun emprunt en cours.</p>`;
+                } else {
+                    loans.forEach(loan => {
+                        html += `
                             <div class="card">
                                 <div class="card-header">
                                     <h3>${loan.book.title}</h3>
                                 </div>
                                 <div class="card-body">
-                                    <p><strong>Utilisateur:</strong> ${loan.user.full_name} (${loan.user.email})</p>
                                     <p><strong>Auteur:</strong> ${loan.book.author}</p>
                                     <p><strong>Date d'emprunt:</strong> ${new Date(loan.loan_date).toLocaleDateString()}</p>
                                     <p><strong>À rendre avant:</strong> ${new Date(loan.due_date).toLocaleDateString()}</p>
@@ -706,33 +754,12 @@ const App = {
                             </div>
                         `;
                     });
-                    return html;
                 }
-
-                html += renderAdminLoans(allLoans);
-
-                html += `</div>`;
-
-                // Attacher l'événement de filtre ici
-                setTimeout(() => {
-                    document.getElementById('admin-loan-search').addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        const userId = document.getElementById('admin-user-id').value;
-                        const userName = document.getElementById('admin-user-name').value;
-                        const userEmail = document.getElementById('admin-user-email').value;
-                        const userAddress = document.getElementById('admin-user-address').value;
-                        let params = {};
-                        if (userId) params.user_id = userId;
-                        if (userName) params.user_name = userName;
-                        if (userEmail) params.user_email = userEmail;
-                        if (userAddress) params.user_address = userAddress;
-                        const loans = await Api.getAllLoans(params);
-                        document.getElementById('admin-loans-list').innerHTML = renderAdminLoans(loans);
-                    });
-                }, 0);
+            } else {
+                html += `<p>Vous n'avez pas accès à cette page.</p>`;
             }
 
-            html += `<button class="btn mt-20" onclick="App.loadPage('books')">Retour aux livres</button>`;
+            html += `</div><button class="btn mt-20" onclick="App.loadPage('books')">Retour aux livres</button>`;
             UI.setContent(html);
         } catch (error) {
             UI.setContent(`<p>Erreur lors du chargement des emprunts.</p>`);
@@ -754,8 +781,8 @@ const App = {
 
 // Variables globales pour la pagination et le tri
 let currentPage = 1;
-let sortBy = "title";
-let sortDesc = false;
+let sortBy = "loan_date";
+let sortDesc = true; // Tri décroissant par défaut (plus récents en premier)
 let lastSearchParams = {};
 
 // Initialiser l'application au chargement de la page

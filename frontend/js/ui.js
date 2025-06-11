@@ -44,6 +44,7 @@ const UI = {
     // Mise à jour de la navigation en fonction de l'état d'authentification
     updateNavigation: function() {
         const isAuthenticated = Auth.isAuthenticated();
+        const user = Auth.getUser();
 
         this.elements.authRequired.forEach(item => {
             item.classList.toggle('hidden', !isAuthenticated);
@@ -53,6 +54,11 @@ const UI = {
         document.querySelectorAll('[data-page="login"], [data-page="register"]').forEach(link => {
             const listItem = link.parentElement;
             listItem.classList.toggle('hidden', isAuthenticated);
+        });
+
+        // Afficher/masquer les liens admin
+        document.querySelectorAll('.admin-required').forEach(item => {
+            item.classList.toggle('hidden', !(user && user.is_admin));
         });
     },
 

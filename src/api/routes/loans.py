@@ -247,6 +247,12 @@ def read_all_loans(
     user_name: str = Query(None, description="Filtrer par nom"),
     user_email: str = Query(None, description="Filtrer par email"),
     user_address: str = Query(None, description="Filtrer par adresse"),
+    book_title: str = Query(None, description="Filtrer par titre du livre"),
+    author: str = Query(None, description="Filtrer par auteur"),
+    loan_date: str = Query(None, description="Filtrer par date d'emprunt (YYYY-MM-DD)"),
+    due_date: str = Query(None, description="Filtrer par date de rendu (YYYY-MM-DD)"),
+    sort_by: str = Query("loan_date", description="Champ de tri"),
+    sort_desc: bool = Query(False, description="Tri descendant"),
 ):
     query = db.query(LoanModel).options(joinedload(LoanModel.book), joinedload(LoanModel.user))
     if user_id:
@@ -257,5 +263,28 @@ def read_all_loans(
         query = query.join(LoanModel.user).filter(UserModel.email.ilike(f"%{user_email}%"))
     if user_address:
         query = query.join(LoanModel.user).filter(UserModel.address.ilike(f"%{user_address}%"))
+    if book_title:
+        query = query.join(LoanModel.book).filter(BookModel.title.ilike(f"%{book_title}%"))
+    if author:
+        query = query.join(LoanModel.book).filter(BookModel.author.ilike(f"%{author}%"))
+    if loan_date:
+        query = query.filter(LoanModel.loan_date.like(f"{loan_date}%"))
+    if due_date:
+        query = query.filter(LoanModel.due_date.like(f"{due_date}%"))
+    if sort_by == "book_title":
+        query = query.join(LoanModel.book)
+    if sort_by == "user_name":
+        query = query.join(LoanModel.user)
+    sort_column = {
+        "loan_date": LoanModel.loan_date,
+        "due_date": LoanModel.due_date,
+        "book_title": BookModel.title,
+        "user_name": UserModel.full_name
+    }.get(sort_by, LoanModel.loan_date)
+
+    if sort_desc:
+        query = query.order_by(sort_column.desc())
+    else:
+        query = query.order_by(sort_column.asc())
     loans = query.all()
     return loans

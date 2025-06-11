@@ -11063,3 +11063,700 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-10 14:46:54,784 [INFO] src.services.base: Getting object with id=2
 2025-06-10 14:47:05,919 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
 2025-06-10 14:47:05,922 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:22:03,161 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:22:03,245 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:22:03,246 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:22:03,252 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:22:03,291 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:22:03,294 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:22:03,294 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:22:03,296 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:22:03,324 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:22:03,338 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:22:03,341 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:22:03,346 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:22:41,631 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:22:41,635 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:22:41,642 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:22:41,657 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:22:42,896 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:22:50,189 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:22:51,053 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:22:52,397 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:22:53,289 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:22:54,202 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:22:57,174 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:22:59,253 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:03,146 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:04,082 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:04,775 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:05,565 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:06,266 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:06,788 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:09,429 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:10,774 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:11,552 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:12,086 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:12,450 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:12,888 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:13,421 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:13,942 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:14,412 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:14,756 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:15,021 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:15,243 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:15,549 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:15,807 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:18,771 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:19,844 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:46,000 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:46,790 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:23:46,984 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:24:03,130 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:24:06,464 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:24:06,467 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:24:06,475 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:24:06,503 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:24:11,977 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:24:11,979 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:24:11,979 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:24:11,981 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:24:13,078 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=False
+2025-06-11 11:24:13,079 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:24:13,079 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:24:13,080 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:24:13,807 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:24:13,808 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:24:13,809 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:24:13,810 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:24:14,427 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=False
+2025-06-11 11:24:14,428 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:24:14,428 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:24:14,429 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:24:15,676 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:24:15,677 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:24:15,677 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:24:15,678 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:24:16,420 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=False
+2025-06-11 11:24:16,422 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:24:16,422 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:24:16,423 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:24:17,054 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:24:17,056 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:24:17,056 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:24:17,058 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:24:17,917 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=False
+2025-06-11 11:24:17,918 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:24:17,919 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:24:17,921 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:24:18,590 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:24:18,592 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:24:18,593 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:24:18,594 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:24:20,141 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:24:21,340 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:24:21,902 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:24:22,674 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:24:23,214 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:24:50,436 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:24:51,570 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:25:41,917 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:25:41,919 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:25:41,919 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:25:41,921 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:25:45,073 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:25:45,511 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:25:46,399 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:25:47,262 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:25:47,946 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:25:48,560 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:25:50,069 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:25:55,670 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:25:57,262 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:25:57,263 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:25:57,263 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:25:57,264 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:25:58,869 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:25:58,871 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:25:58,873 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:00,670 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-11 11:26:00,672 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:00,674 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:02,369 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=publication_year, sort_desc=True
+2025-06-11 11:26:02,370 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:02,373 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:04,776 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:26:04,778 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:04,779 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:07,087 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:26:07,089 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:07,092 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:07,925 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:26:07,926 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:07,927 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:08,553 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:26:08,555 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:08,557 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:09,202 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:26:09,204 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:09,205 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:10,124 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:26:10,126 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:10,128 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:11,971 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:26:11,972 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:11,973 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:14,017 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-11 11:26:14,018 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:14,019 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:15,155 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-11 11:26:15,156 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:15,159 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:16,251 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-11 11:26:16,252 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:16,253 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:17,867 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=publication_year, sort_desc=True
+2025-06-11 11:26:17,868 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:17,870 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:18,673 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=publication_year, sort_desc=False
+2025-06-11 11:26:18,675 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:18,677 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:19,422 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=publication_year, sort_desc=True
+2025-06-11 11:26:19,424 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:26:19,426 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:26:20,299 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:21,412 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:22,152 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:23,554 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:24,734 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:25,385 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:26,018 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:26,638 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:27,353 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:28,930 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:30,081 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:30,958 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:35,003 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:36,149 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:36,586 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:42,036 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:42,656 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:42,848 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:26:43,063 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:27:56,878 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:27:56,880 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:27:56,881 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:27:56,882 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:27:57,882 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:28:00,386 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:28:01,092 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:28:01,763 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:28:02,342 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:28:03,484 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:28:09,255 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:28:09,967 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:28:11,466 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:28:11,766 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:28:53,465 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=due_date, sort_desc=True
+2025-06-11 11:28:53,518 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:28:53,525 [WARNING] src.utils.pagination: Sort column 'due_date' does not exist in schema 'Book'
+2025-06-11 11:28:53,536 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:28:55,376 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=due_date, sort_desc=False
+2025-06-11 11:28:55,378 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:28:55,378 [WARNING] src.utils.pagination: Sort column 'due_date' does not exist in schema 'Book'
+2025-06-11 11:28:55,380 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:28:55,982 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=due_date, sort_desc=True
+2025-06-11 11:28:55,984 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:28:55,984 [WARNING] src.utils.pagination: Sort column 'due_date' does not exist in schema 'Book'
+2025-06-11 11:28:55,985 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:28:57,649 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:28:57,650 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:28:57,651 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:28:58,545 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:28:58,547 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:28:58,548 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:28:59,225 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:28:59,227 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:28:59,228 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:28:59,875 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:28:59,877 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:28:59,879 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:29:02,823 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:29:02,826 [INFO] src.api.routes.books: Advanced search: query=q, category_id=None, author=None, publication_year=None
+2025-06-11 11:29:02,832 [INFO] src.utils.pagination: Total items in query: 4
+2025-06-11 11:29:02,836 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:30:14,292 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:30:14,294 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:30:14,295 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:30:14,296 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:30:15,046 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:16,943 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:17,688 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:18,195 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:18,538 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:18,790 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:20,778 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:21,902 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:22,470 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:36,863 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:45,199 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:30:52,123 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:02,861 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:04,550 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:04,872 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:06,494 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:06,886 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:07,321 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:07,571 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:07,793 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:11,330 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:11,878 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:12,071 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:16,248 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:29,775 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:30,507 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:31,109 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:31,552 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:31:32,415 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:31:32,417 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:31:32,417 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:31:32,419 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:31:33,527 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=False
+2025-06-11 11:31:33,528 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:31:33,528 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:31:33,530 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:31:34,745 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:31:34,746 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:31:34,748 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:31:35,591 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:31:35,593 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:31:35,595 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:31:36,539 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:31:36,540 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:31:36,541 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:31:37,540 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:31:37,541 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:31:37,543 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:31:39,089 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:31:39,090 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:31:39,092 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:31:41,002 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-11 11:31:41,003 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:31:41,004 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:31:41,803 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-11 11:31:41,804 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:31:41,805 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:31:42,058 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-11 11:31:42,060 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:31:42,061 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:31:43,937 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:33:51,136 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:33:51,138 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:33:51,139 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:33:51,140 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:33:55,581 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:33:56,746 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:33:57,593 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:33:58,243 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:33:59,090 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:00,785 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:03,374 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:04,399 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:04,634 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:04,813 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:08,503 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:09,532 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:09,724 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:09,917 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:10,103 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:51,281 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:34:54,594 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:02,967 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:03,683 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:03,876 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:04,075 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:04,348 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:45,117 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:35:45,119 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:35:45,119 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:35:45,121 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:35:46,545 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=False
+2025-06-11 11:35:46,549 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:35:46,550 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:35:46,552 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:35:48,330 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:49,361 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:50,069 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:51,718 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:54,462 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:57,330 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:35:59,246 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:36:06,926 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:36:07,651 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:36:07,788 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:37:38,231 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:37:38,232 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:37:38,233 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:37:38,234 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:37:40,236 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:37:40,238 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:37:40,239 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:37:40,240 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:37:45,314 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:37:45,318 [INFO] src.api.routes.books: Advanced search: query=a, category_id=None, author=None, publication_year=None
+2025-06-11 11:37:45,319 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:37:45,320 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:37:45,322 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:37:47,732 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:37:47,733 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:37:47,735 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:37:51,180 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:37:51,182 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:37:51,184 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:37:51,844 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:37:51,846 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:37:51,848 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:37:52,614 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:37:52,616 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:37:52,617 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:37:53,334 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:37:53,336 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:37:53,337 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:37:54,201 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:37:54,204 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:37:54,205 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:37:58,013 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:37:58,015 [INFO] src.api.routes.books: Advanced search: query=alb, category_id=None, author=None, publication_year=None
+2025-06-11 11:37:58,017 [INFO] src.utils.pagination: Total items in query: 1
+2025-06-11 11:37:58,018 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:38:02,328 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:38:10,460 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:38:11,035 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:38:14,669 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:38:15,341 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:38:15,848 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:38:16,068 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:38:16,276 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:38:16,575 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:38:19,020 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:38:19,028 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:38:19,040 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:38:19,049 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:38:21,267 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-11 11:38:21,269 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:38:21,271 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:38:22,074 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=False
+2025-06-11 11:38:22,079 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:38:22,083 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:38:22,700 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=author, sort_desc=True
+2025-06-11 11:38:22,702 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:38:22,704 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:40:57,010 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:40:57,013 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:40:57,019 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:40:57,022 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:40:59,262 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:04,797 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:07,219 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:08,064 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:08,679 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:09,108 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:09,421 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:09,673 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:09,907 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:10,462 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:10,964 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:12,350 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:13,028 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:13,529 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:13,742 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:13,934 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:16,647 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:16,650 [INFO] src.api.routes.loans: Admin 3 returns loan 1
+2025-06-11 11:41:16,650 [INFO] src.services.loans: Tentative de retour de l'emprunt 1
+2025-06-11 11:41:16,676 [INFO] src.repositories.base: Updated Loan with id=1
+2025-06-11 11:41:16,676 [INFO] src.services.loans: Emprunt 1 marqué comme retourné
+2025-06-11 11:41:16,723 [INFO] src.repositories.books: Mise à jour du livre ID 2
+2025-06-11 11:41:16,741 [INFO] src.repositories.base: Updated Book with id=2
+2025-06-11 11:41:16,741 [INFO] src.utils.cache: Invalidating cache with prefix: src.repositories.books
+2025-06-11 11:41:16,742 [INFO] src.services.loans: Quantité du livre 2 mise à jour à 5
+2025-06-11 11:41:16,742 [INFO] src.api.routes.loans: Loan 1 marked as returned
+2025-06-11 11:41:16,756 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:18,008 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:18,707 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:20,365 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:21,097 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:21,312 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:21,513 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:37,646 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:38,539 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:39,363 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:40,036 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:41:40,385 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:12,112 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:51:12,126 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:51:12,140 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:51:12,160 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:51:13,061 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:16,593 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:18,084 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:18,811 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:19,334 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:19,537 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:19,856 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:20,111 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:20,776 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:21,410 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:22,212 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:22,933 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:23,440 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:51:44,890 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:54:16,318 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:54:16,321 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:54:16,324 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:54:16,325 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:54:17,664 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:54:19,809 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:54:20,785 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:54:23,382 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:54:24,774 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:54:25,459 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:54:25,795 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:54:26,121 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:54:26,455 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:54:26,864 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:43,238 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:56:43,243 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:56:43,248 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:56:43,254 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:56:44,328 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:46,948 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:47,931 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:48,503 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:48,712 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:48,902 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:49,072 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:49,251 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:49,501 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:49,830 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:50,438 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:55,068 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:55,514 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:55,706 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:56:55,927 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:58:49,342 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 11:58:49,354 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:58:49,364 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 11:58:49,369 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:58:51,138 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:58:54,112 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:58:55,488 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:58:56,494 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:58:57,202 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:58:57,803 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:59:02,867 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:59:03,437 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:59:03,803 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:59:04,744 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=book_title, sort_desc=True
+2025-06-11 11:59:04,746 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:04,746 [WARNING] src.utils.pagination: Sort column 'book_title' does not exist in schema 'Book'
+2025-06-11 11:59:04,748 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:06,172 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=book_title, sort_desc=False
+2025-06-11 11:59:06,174 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:06,174 [WARNING] src.utils.pagination: Sort column 'book_title' does not exist in schema 'Book'
+2025-06-11 11:59:06,176 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:07,599 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:59:07,600 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:07,601 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:08,336 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:59:08,337 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:08,338 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:08,888 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:59:08,890 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:08,891 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:09,272 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:59:09,273 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:09,274 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:09,494 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:59:09,495 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:09,496 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:09,673 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:59:09,674 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:09,675 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:10,094 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:59:10,095 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:10,096 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:10,387 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 11:59:10,388 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:10,389 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:10,465 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 11:59:10,467 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 11:59:10,468 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 11:59:40,337 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:59:41,863 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:59:43,677 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:59:44,339 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:59:44,800 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:59:45,005 [INFO] src.services.base: Getting object with id=3
+2025-06-11 11:59:45,186 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:15,660 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 12:02:15,662 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 12:02:15,662 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 12:02:15,664 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 12:02:16,276 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:19,977 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:21,432 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:22,101 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:22,694 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:23,082 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:24,721 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:25,881 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:26,568 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:27,127 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:27,453 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:43,841 [INFO] src.api.routes.auth: Login attempt for user: admin@example.com
+2025-06-11 12:02:43,844 [INFO] src.repositories.users: Utilisateur trouvé: <User(email=admin@example.com, full_name=Admin User)>
+2025-06-11 12:02:43,845 [WARNING] passlib.handlers.bcrypt: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\lpnts\OneDrive - Fondation EPF\Documents\epf\matières\4A\Web programming\Lab\Lab1\WebLab1_PONTES_NICOLLE_AUBERT\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-06-11 12:02:44,234 [INFO] src.utils.security: Password verification succeeded.
+2025-06-11 12:02:44,234 [INFO] src.services.users: Authentification réussie pour l'utilisateur: admin@example.com
+2025-06-11 12:02:44,235 [INFO] src.utils.security: Access token created for subject: 3
+2025-06-11 12:02:44,235 [INFO] src.api.routes.auth: User admin@example.com authenticated successfully
+2025-06-11 12:02:44,253 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:44,254 [INFO] src.api.routes.users: Fetching current user: id=3
+2025-06-11 12:02:44,264 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=book_title, sort_desc=False
+2025-06-11 12:02:44,265 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 12:02:44,265 [WARNING] src.utils.pagination: Sort column 'book_title' does not exist in schema 'Book'
+2025-06-11 12:02:44,266 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 12:02:47,539 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 12:02:47,540 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 12:02:47,541 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 12:02:48,414 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 12:02:48,415 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 12:02:48,417 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 12:02:48,812 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=False
+2025-06-11 12:02:48,814 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 12:02:48,815 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 12:02:48,942 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=title, sort_desc=True
+2025-06-11 12:02:48,943 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 12:02:48,943 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 12:02:50,507 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:50,527 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:57,413 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:57,431 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:58,538 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:58,538 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:59,121 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:59,122 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:59,327 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:59,328 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:59,536 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:59,537 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:59,691 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:59,691 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:59,959 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:02:59,959 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:00,457 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:00,458 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:01,013 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:01,014 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:01,540 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:01,541 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:01,750 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:01,751 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:01,941 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:01,942 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:02,148 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:02,149 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:06,996 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:07,012 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:10,314 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:10,328 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:10,969 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:10,978 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:19,061 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:19,074 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:24,661 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:24,682 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:25,496 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:25,509 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:25,677 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:25,695 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:25,869 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:25,886 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:26,076 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:26,090 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:42,268 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:42,280 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:45,178 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:45,202 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:45,831 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:45,853 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:46,063 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:46,086 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:49,573 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:49,586 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:52,557 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:03:52,566 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:04:06,244 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=book_title, sort_desc=True
+2025-06-11 12:04:06,245 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 12:04:06,245 [WARNING] src.utils.pagination: Sort column 'book_title' does not exist in schema 'Book'
+2025-06-11 12:04:06,246 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 12:06:15,703 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 12:06:15,707 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 12:06:15,715 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 12:06:15,719 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 12:06:16,312 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:22,459 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:23,094 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:23,292 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:23,495 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:24,413 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:24,995 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:25,218 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:25,418 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:25,611 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:27,215 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:28,218 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:28,887 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:29,472 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:30,024 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:30,810 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:31,358 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:33,335 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:34,348 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:34,536 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:34,722 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:35,256 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:35,722 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:36,100 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:06:36,665 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:30,909 [INFO] src.api.routes.books: Fetching books: skip=0, limit=10, sort_by=loan_date, sort_desc=True
+2025-06-11 12:08:30,914 [INFO] src.utils.pagination: Total items in query: 8
+2025-06-11 12:08:30,917 [WARNING] src.utils.pagination: Sort column 'loan_date' does not exist in schema 'Book'
+2025-06-11 12:08:30,921 [INFO] src.utils.pagination: Returning page 1/1 with size 10
+2025-06-11 12:08:31,701 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:32,723 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:33,608 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:34,130 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:34,422 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:34,660 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:35,172 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:35,757 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:36,177 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:36,384 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:36,563 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:44,134 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:44,645 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:08:44,802 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:13:59,339 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:14:03,238 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:14:05,500 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:14:07,008 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:14:07,334 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:14:07,784 [INFO] src.services.base: Getting object with id=3
+2025-06-11 12:14:08,232 [INFO] src.services.base: Getting object with id=3
