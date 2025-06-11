@@ -143,4 +143,8 @@ const Api = {
             .join('&');
         return this.call(`/loans/${query ? '?' + query : ''}`);
     },
+
+    updateBook: async function(id, data) {
+        return this.call(`/books/${id}`, 'PUT', data);
+    },
 };

@@ -311,11 +311,11 @@ const App = {
     // Affiche les détails d'un livre
     viewBookDetails: async function(bookId) {
         UI.showLoading();
-
         try {
             const book = await Api.getBook(bookId);
+            const user = Auth.getUser();
 
-            const html = `
+            let html = `
                 <div class="book-details">
                     <h2>${book.title}</h2>
                     <div class="book-info">
@@ -331,34 +331,105 @@ const App = {
                         <h3>Description</h3>
                         <p>${book.description || 'Aucune description disponible.'}</p>
                     </div>
-                    ${book.quantity > 0 ? `<button class="btn" id="borrow-btn">Emprunter ce livre</button>` : `<span class="text-danger">Indisponible</span>`}
-                    <button class="btn mt-20" onclick="App.loadPage('books')">Retour à la liste</button>
-                </div>
             `;
+
+            // Si admin, afficher le formulaire d'édition
+            if (user && user.is_admin) {
+                html += `
+                    <h3>Modifier le livre</h3>
+                    <form id="edit-book-form">
+                        <div class="form-group">
+                            <label for="edit-title">Titre</label>
+                            <input type="text" id="edit-title" class="form-control" value="${book.title}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-author">Auteur</label>
+                            <input type="text" id="edit-author" class="form-control" value="${book.author}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-isbn">ISBN</label>
+                            <input type="text" id="edit-isbn" class="form-control" value="${book.isbn}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-publication-year">Année de publication</label>
+                            <input type="number" id="edit-publication-year" class="form-control" value="${book.publication_year}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-publisher">Éditeur</label>
+                            <input type="text" id="edit-publisher" class="form-control" value="${book.publisher || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-language">Langue</label>
+                            <input type="text" id="edit-language" class="form-control" value="${book.language || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-pages">Pages</label>
+                            <input type="number" id="edit-pages" class="form-control" value="${book.pages || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-description">Description</label>
+                            <textarea id="edit-description" class="form-control">${book.description || ''}</textarea>
+                        </div>
+                        <button type="submit" class="btn">Enregistrer</button>
+                    </form>
+                `;
+            }
+
+            // Formulaire d'emprunt
+            if (user && !user.is_admin && book.quantity > 0) {
+                html += `
+                    <form id="borrow-form">
+                        <button type="submit" class="btn">Emprunter ce livre</button>
+                    </form>
+                `;
+            }
+
+            html += `<button class="btn mt-20" onclick="App.loadPage('books')">Retour à la liste</button></div>`;
 
             UI.setContent(html);
 
-            // Dans App.viewBookDetails, après UI.setContent(html);
-            if (book.quantity > 0) {
-                const borrowBtn = document.getElementById('borrow-btn');
-                if (borrowBtn) {
-                    borrowBtn.addEventListener('click', async () => {
-                        try {
-                            await Api.borrowBook(book.id);
-                            UI.showMessage('Livre emprunté avec succès !', 'success');
-                            App.loadPage('loans');
-                        } catch (error) {
-                            // L'erreur est déjà affichée par Api.call
-                        }
-                    });
-                }
+            // Handler pour l'édition (admin uniquement)
+            if (user && user.is_admin) {
+                document.getElementById('edit-book-form').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const data = {
+                        title: document.getElementById('edit-title').value,
+                        author: document.getElementById('edit-author').value,
+                        isbn: document.getElementById('edit-isbn').value,
+                        publication_year: parseInt(document.getElementById('edit-publication-year').value),
+                        publisher: document.getElementById('edit-publisher').value,
+                        language: document.getElementById('edit-language').value,
+                        pages: parseInt(document.getElementById('edit-pages').value),
+                        description: document.getElementById('edit-description').value
+                    };
+                    try {
+                        await Api.updateBook(book.id, data);
+                        UI.showMessage('Livre modifié avec succès', 'success');
+                        App.viewBookDetails(book.id); // recharge la page
+                    } catch (error) {
+                        // message d'erreur déjà géré par Api.call
+                    }
+                });
             }
+
+            // Handler pour l'emprunt
+            if (user && !user.is_admin && book.quantity > 0) {
+                document.getElementById('borrow-form').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    try {
+                        await Api.borrowBook(book.id);
+                        UI.showMessage('Livre emprunté avec succès !', 'success');
+                        App.viewBookDetails(book.id); // recharge la page
+                    } catch (error) {
+                        // message d'erreur déjà géré par Api.call
+                    }
+                });
+            }
+
+            UI.hideLoading();
         } catch (error) {
-            console.error('Erreur lors du chargement des détails du livre:', error);
-            UI.setContent(`
-                <p>Erreur lors du chargement des détails du livre. Veuillez réessayer.</p>
-                <button class="btn mt-20" onclick="App.loadPage('books')">Retour à la liste</button>
-            `);
+            UI.setContent(`<p>Erreur lors du chargement des détails du livre.</p>`);
+            UI.hideLoading();
         }
     },
 
@@ -775,6 +846,96 @@ const App = {
             App.loadLoansPage();
         } catch (error) {
             // L'erreur est déjà affichée par Api.call
+        }
+    },
+
+    // Charge la page d'édition du livre
+    loadEditBookPage: async function(bookId) {
+        UI.showLoading();
+        try {
+            const book = await Api.getBook(bookId);
+
+            const html = `
+                <div class="form-container">
+                    <h2 class="text-center mb-20">Modifier le livre</h2>
+                    <form id="edit-book-form">
+                        <div class="form-group">
+                            <label for="edit-title">Titre</label>
+                            <input type="text" id="edit-title" class="form-control" value="${book.title}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-author">Auteur</label>
+                            <input type="text" id="edit-author" class="form-control" value="${book.author}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-isbn">ISBN</label>
+                            <input type="text" id="edit-isbn" class="form-control" value="${book.isbn}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-publication-year">Année de publication</label>
+                            <input type="number" id="edit-publication-year" class="form-control" value="${book.publication_year}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-publisher">Éditeur</label>
+                            <input type="text" id="edit-publisher" class="form-control" value="${book.publisher || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-language">Langue</label>
+                            <input type="text" id="edit-language" class="form-control" value="${book.language || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-pages">Pages</label>
+                            <input type="number" id="edit-pages" class="form-control" value="${book.pages || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-description">Description</label>
+                            <textarea id="edit-description" class="form-control">${book.description || ''}</textarea>
+                        </div>
+                        <button type="submit" class="btn">Enregistrer</button>
+                    </form>
+                </div>
+            `;
+
+            UI.setContent(html);
+
+            // Configurer le formulaire d'édition du livre
+            document.getElementById('edit-book-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const title = document.getElementById('edit-title').value;
+                const author = document.getElementById('edit-author').value;
+                const isbn = document.getElementById('edit-isbn').value;
+                const publicationYear = document.getElementById('edit-publication-year').value;
+                const publisher = document.getElementById('edit-publisher').value;
+                const language = document.getElementById('edit-language').value;
+                const pages = document.getElementById('edit-pages').value;
+                const description = document.getElementById('edit-description').value;
+
+                try {
+                    const bookData = {
+                        title,
+                        author,
+                        isbn,
+                        publication_year: publicationYear,
+                        publisher: publisher || null,
+                        language: language || null,
+                        pages: pages || null,
+                        description: description || null
+                    };
+
+                    await Api.call(`/books/${bookId}`, 'PUT', bookData);
+                    UI.showMessage('Livre mis à jour avec succès', 'success');
+                    this.loadPage('books');
+                } catch (error) {
+                    console.error('Erreur lors de la mise à jour du livre:', error);
+                }
+            });
+        } catch (error) {
+            console.error('Erreur lors du chargement des détails du livre:', error);
+            UI.setContent(`
+                <p>Erreur lors du chargement des détails du livre. Veuillez réessayer.</p>
+                <button class="btn mt-20" onclick="App.loadPage('books')">Retour à la liste</button>
+            `);
         }
     },
 };
