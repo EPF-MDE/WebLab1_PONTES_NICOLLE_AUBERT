@@ -197,22 +197,32 @@ const App = {
 
             let html = `
                 <h2 class="mb-20">Catalogue de Livres</h2>
-                <form id="search-form" class="mb-20">
-                    <input type="text" id="search-query" placeholder="Titre, auteur, ISBN..." class="form-control" style="width:200px;display:inline-block;">
-                    <input type="text" id="search-author" placeholder="Auteur" class="form-control" style="width:150px;display:inline-block;">
-                    <input type="number" id="search-year" placeholder="Année" class="form-control" style="width:100px;display:inline-block;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+            `;
+
+            const user = Auth.getUser();
+            if (user && user.is_admin) {
+                html += `<button class="btn" id="add-book-btn" style="margin-right:16px;">Ajouter un livre</button>`;
+            }
+
+            html += `
+                <form id="search-form" style="display: flex; align-items: center; gap: 8px; margin-bottom: 0;">
+                    <input type="text" id="search-query" placeholder="Titre, auteur, ISBN..." class="form-control" style="width:200px;">
+                    <input type="text" id="search-author" placeholder="Auteur" class="form-control" style="width:150px;">
+                    <input type="number" id="search-year" placeholder="Année" class="form-control" style="width:100px;">
                     <button type="submit" class="btn">Rechercher</button>
                 </form>
-                <div class="mb-20">
-                    <label for="sort-by">Trier par :</label>
-                    <select id="sort-by" class="form-control" style="width:150px;display:inline-block;">
-                        <option value="title">Titre</option>
-                        <option value="author">Auteur</option>
-                        <option value="publication_year">Année</option>
-                    </select>
-                    <button id="sort-dir" class="btn" type="button">${sortDesc ? "⬇️" : "⬆️"}</button>
-                </div>
-                <div class="card-container">
+            </div>
+            <div class="mb-20">
+                <label for="sort-by">Trier par :</label>
+                <select id="sort-by" class="form-control" style="width:150px;display:inline-block;">
+                    <option value="title">Titre</option>
+                    <option value="author">Auteur</option>
+                    <option value="publication_year">Année</option>
+                </select>
+                <button id="sort-dir" class="btn" type="button">${sortDesc ? "⬇️" : "⬆️"}</button>
+            </div>
+            <div class="card-container">
             `;
 
             if (!books.items || books.items.length === 0) {
@@ -239,11 +249,11 @@ const App = {
             }
 
             html += `</div>
-    <div class="pagination">
-        <button id="prev-page" class="btn" ${page <= 1 ? 'disabled' : ''}>Précédent</button>
-        <span>Page ${page} / ${pages}</span>
-        <button id="next-page" class="btn" ${page >= pages ? 'disabled' : ''}>Suivant</button>
-    </div>
+<div class="pagination">
+    <button id="prev-page" class="btn" ${page <= 1 ? 'disabled' : ''}>Précédent</button>
+    <span>Page ${page} / ${pages}</span>
+    <button id="next-page" class="btn" ${page >= pages ? 'disabled' : ''}>Suivant</button>
+</div>
 `;
 
             UI.setContent(html);
@@ -269,7 +279,7 @@ const App = {
                         sort_by: sortBy,
                         sort_desc: sortDesc
                     });
-                    App.renderBooks(books); // Crée une méthode pour afficher les livres (voir plus bas)
+                    App.renderBooks(books);
                 } else {
                     App.loadBooksPage();
                 }
@@ -301,6 +311,13 @@ const App = {
                 App.loadBooksPage();
             });
             document.getElementById('sort-by').value = sortBy;
+
+            // Handler bouton ajouter un livre
+            if (user && user.is_admin) {
+                document.getElementById('add-book-btn').addEventListener('click', () => {
+                    App.loadAddBookPage();
+                });
+            }
 
         } catch (error) {
             console.error('Erreur lors du chargement des livres:', error);
@@ -367,6 +384,10 @@ const App = {
                             <input type="number" id="edit-pages" class="form-control" value="${book.pages || ''}">
                         </div>
                         <div class="form-group">
+                            <label for="edit-quantity">Quantité d'exemplaires</label>
+                            <input type="number" id="edit-quantity" class="form-control" value="${book.quantity}" min="0" required>
+                        </div>
+                        <div class="form-group">
                             <label for="edit-description">Description</label>
                             <textarea id="edit-description" class="form-control">${book.description || ''}</textarea>
                         </div>
@@ -400,6 +421,7 @@ const App = {
                         publisher: document.getElementById('edit-publisher').value,
                         language: document.getElementById('edit-language').value,
                         pages: parseInt(document.getElementById('edit-pages').value),
+                        quantity: parseInt(document.getElementById('edit-quantity').value),
                         description: document.getElementById('edit-description').value
                     };
                     try {
@@ -888,6 +910,10 @@ const App = {
                             <input type="number" id="edit-pages" class="form-control" value="${book.pages || ''}">
                         </div>
                         <div class="form-group">
+                            <label for="edit-quantity">Quantité d'exemplaires</label>
+                            <input type="number" id="edit-quantity" class="form-control" value="${book.quantity}" min="0" required>
+                        </div>
+                        <div class="form-group">
                             <label for="edit-description">Description</label>
                             <textarea id="edit-description" class="form-control">${book.description || ''}</textarea>
                         </div>
@@ -899,35 +925,78 @@ const App = {
             UI.setContent(html);
 
             // Configurer le formulaire d'édition du livre
-            document.getElementById('edit-book-form').addEventListener('submit', async (e) => {
+            document.getElementById('edit-book-form').addEventListener('submit', async function(e) {
                 e.preventDefault();
 
-                const title = document.getElementById('edit-title').value;
-                const author = document.getElementById('edit-author').value;
-                const isbn = document.getElementById('edit-isbn').value;
-                const publicationYear = document.getElementById('edit-publication-year').value;
-                const publisher = document.getElementById('edit-publisher').value;
-                const language = document.getElementById('edit-language').value;
-                const pages = document.getElementById('edit-pages').value;
-                const description = document.getElementById('edit-description').value;
+                // 1. Récupération des valeurs
+                const title = document.getElementById('edit-title').value.trim();
+                const author = document.getElementById('edit-author').value.trim();
+                const isbn = document.getElementById('edit-isbn').value.trim();
+                const publication_year = parseInt(document.getElementById('edit-publication-year').value);
+                const publisher = document.getElementById('edit-publisher').value.trim();
+                const language = document.getElementById('edit-language').value.trim();
+                let pagesValue = document.getElementById('edit-pages').value;
+                let pages = pagesValue ? parseInt(pagesValue) : null;
+                const quantity = parseInt(document.getElementById('edit-quantity').value);
+                const description = document.getElementById('edit-description').value.trim();
+
+                // 2. Validation stricte AVANT de construire l'objet à envoyer
+                if (!title || title.length < 1 || title.length > 100) {
+                    UI.showMessage("Le titre doit faire entre 1 et 100 caractères.", "error");
+                    return;
+                }
+                if (!author || author.length < 1 || author.length > 100) {
+                    UI.showMessage("L'auteur doit faire entre 1 et 100 caractères.", "error");
+                    return;
+                }
+                if (!isbn || isbn.length < 10 || isbn.length > 13) {
+                    UI.showMessage("L'ISBN doit faire entre 10 et 13 caractères.", "error");
+                    return;
+                }
+                if (isNaN(publication_year) || publication_year < 1000 || publication_year > new Date().getFullYear()) {
+                    UI.showMessage(`L'année de publication doit être comprise entre 1000 et ${new Date().getFullYear()}.`, "error");
+                    return;
+                }
+                if (isNaN(quantity) || quantity < 0) {
+                    UI.showMessage("La quantité doit être un nombre entier positif ou nul.", "error");
+                    return;
+                }
+                if (pages !== null && (isNaN(pages) || pages <= 0)) {
+                    UI.showMessage("Le nombre de pages doit être strictement positif.", "error");
+                    return;
+                }
+                if (publisher && publisher.length > 100) {
+                    UI.showMessage("L'éditeur ne doit pas dépasser 100 caractères.", "error");
+                    return;
+                }
+                if (language && language.length > 50) {
+                    UI.showMessage("La langue ne doit pas dépasser 50 caractères.", "error");
+                    return;
+                }
+                if (description && description.length > 1000) {
+                    UI.showMessage("La description ne doit pas dépasser 1000 caractères.", "error");
+                    return;
+                }
+
+                // 3. Construction de l'objet à envoyer SEULEMENT si tout est valide
+                const data = {
+                    title,
+                    author,
+                    isbn,
+                    publication_year,
+                    quantity
+                };
+    if (publisher) data.publisher = publisher;
+    if (language) data.language = language;
+    if (pages !== null && !isNaN(pages) && pages > 0) data.pages = pages;
+    if (description) data.description = description;
 
                 try {
-                    const bookData = {
-                        title,
-                        author,
-                        isbn,
-                        publication_year: publicationYear,
-                        publisher: publisher || null,
-                        language: language || null,
-                        pages: pages || null,
-                        description: description || null
-                    };
-
-                    await Api.call(`/books/${bookId}`, 'PUT', bookData);
-                    UI.showMessage('Livre mis à jour avec succès', 'success');
-                    this.loadPage('books');
+                    await Api.updateBook(book.id, data);
+                    UI.showMessage('Livre modifié avec succès', 'success');
+                    App.viewBookDetails(book.id);
                 } catch (error) {
-                    console.error('Erreur lors de la mise à jour du livre:', error);
+                    // message d'erreur déjà géré par Api.call
                 }
             });
         } catch (error) {
@@ -937,6 +1006,141 @@ const App = {
                 <button class="btn mt-20" onclick="App.loadPage('books')">Retour à la liste</button>
             `);
         }
+    },
+
+    // Charge la page d'ajout de livre
+    loadAddBookPage: function() {
+        const html = `
+        <div class="form-container">
+            <h2 class="text-center mb-20">Ajouter un livre</h2>
+            <form id="add-book-form">
+                <div class="form-group">
+                    <label for="title">Titre</label>
+                    <input type="text" id="title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Auteur</label>
+                    <input type="text" id="author" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="isbn">ISBN</label>
+                    <input type="text" id="isbn" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="publication_year">Année de publication</label>
+                    <input type="number" id="publication_year" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantité d'exemplaires</label>
+                    <input type="number" id="quantity" class="form-control" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="publisher">Éditeur</label>
+                    <input type="text" id="publisher" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="language">Langue</label>
+                    <input type="text" id="language" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-block">Ajouter</button>
+            </form>
+            <button class="btn btn-block mt-20" onclick="App.loadBooksPage()">Annuler</button>
+        </div>
+    `;
+        UI.setContent(html);
+
+        document.getElementById('add-book-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Récupération des valeurs
+            const title = document.getElementById('title').value.trim();
+            const author = document.getElementById('author').value.trim();
+            const isbn = document.getElementById('isbn').value.trim();
+            const publication_year = parseInt(document.getElementById('publication_year').value);
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const publisher = document.getElementById('publisher').value.trim();
+            const language = document.getElementById('language').value.trim();
+            let pagesValue = document.getElementById('pages').value;
+            let pages = pagesValue ? parseInt(pagesValue) : null;
+            const description = document.getElementById('description').value.trim();
+
+            // Validation frontend stricte
+            if (!title || title.length < 1 || title.length > 100) {
+                UI.showMessage("Le titre doit faire entre 1 et 100 caractères.", "error");
+                return;
+            }
+            if (!author || author.length < 1 || author.length > 100) {
+                UI.showMessage("L'auteur doit faire entre 1 et 100 caractères.", "error");
+                return;
+            }
+            if (!isbn || isbn.length < 10 || isbn.length > 13) {
+                UI.showMessage("L'ISBN doit faire entre 10 et 13 caractères.", "error");
+                return;
+            }
+            if (isNaN(publication_year) || publication_year < 1000 || publication_year > new Date().getFullYear()) {
+                UI.showMessage(`L'année de publication doit être comprise entre 1000 et ${new Date().getFullYear()}.`, "error");
+                return;
+            }
+            if (isNaN(quantity) || quantity < 1) {
+                UI.showMessage("La quantité doit être un nombre entier positif.", "error");
+                return;
+            }
+            if (pages !== null && (isNaN(pages) || pages <= 0)) {
+                UI.showMessage("Le nombre de pages doit être strictement positif.", "error");
+                return;
+            }
+            if (publisher && publisher.length > 100) {
+                UI.showMessage("L'éditeur ne doit pas dépasser 100 caractères.", "error");
+                return;
+            }
+            if (language && language.length > 50) {
+                UI.showMessage("La langue ne doit pas dépasser 50 caractères.", "error");
+                return;
+            }
+            if (description && description.length > 1000) {
+                UI.showMessage("La description ne doit pas dépasser 1000 caractères.", "error");
+                return;
+            }
+
+            // Construction de l'objet à envoyer
+            const data = {
+                title,
+                author,
+                isbn,
+                publication_year,
+                quantity
+            };
+
+            // Champs optionnels : n'ajouter que s'ils sont non vides et valides
+            if (publisher && publisher.length <= 100) {
+                data.publisher = publisher;
+            }
+            if (language && language.length <= 50) {
+                data.language = language;
+            }
+            if (pages !== null && !isNaN(pages) && pages > 0) {
+                data.pages = pages;
+            }
+            if (description && description.length <= 1000) {
+                data.description = description;
+            }
+
+            try {
+                await Api.createBook(data);
+                UI.showMessage('Livre ajouté avec succès', 'success');
+                App.loadBooksPage();
+            } catch (error) {
+                // message d'erreur déjà géré par Api.call
+            }
+        });
     },
 };
 

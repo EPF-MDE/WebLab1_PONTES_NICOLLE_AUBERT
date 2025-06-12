@@ -102,10 +102,8 @@ def update_book(
         if not book:
             logger.warning("Book not found for update: ID %s", id)
             raise CustomException("Livre non trouvé", status_code=status.HTTP_404_NOT_FOUND)
-        # Empêcher la modification de la quantité si elle est présente dans le payload
         update_data = book_in.dict(exclude_unset=True)
-        if "quantity" in update_data:
-            update_data.pop("quantity")
+        # NE PAS supprimer "quantity" du payload !
         book = service.update(db_obj=book, obj_in=update_data)
         logger.info("Book updated: ID %s", id)
         return book

@@ -147,4 +147,8 @@ const Api = {
     updateBook: async function(id, data) {
         return this.call(`/books/${id}`, 'PUT', data);
     },
+
+    createBook: async function(data) {
+        return this.call('/books/', 'POST', data);
+    },
 };
