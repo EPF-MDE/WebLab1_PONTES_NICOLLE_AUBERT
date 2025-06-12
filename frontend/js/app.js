@@ -986,10 +986,10 @@ const App = {
                     publication_year,
                     quantity
                 };
-    if (publisher) data.publisher = publisher;
-    if (language) data.language = language;
+    if (publisher && publisher.length <= 100) data.publisher = publisher;
+    if (language && language.length <= 50) data.language = language;
     if (pages !== null && !isNaN(pages) && pages > 0) data.pages = pages;
-    if (description) data.description = description;
+    if (description && description.length <= 1000) data.description = description;
 
                 try {
                     await Api.updateBook(book.id, data);
