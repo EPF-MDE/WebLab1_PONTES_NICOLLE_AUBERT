@@ -90,9 +90,9 @@ const App = {
                 await Api.login(email, password);
                 UI.updateNavigation();
                 UI.showMessage('Connexion réussie', 'success');
-                this.loadPage('books');
+                App.loadPage('books');
             } catch (error) {
-                console.error('Erreur de connexion:', error);
+                // message d'erreur déjà géré par Api.call
             }
         });
 
@@ -101,7 +101,7 @@ const App = {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const page = e.target.getAttribute('data-page');
-                this.loadPage(page);
+                App.loadPage(page);
             });
         });
     },
@@ -163,9 +163,9 @@ const App = {
 
                 await Api.register(userData);
                 UI.showMessage('Inscription réussie. Vous pouvez maintenant vous connecter.', 'success');
-                this.loadPage('login');
+                App.loadPage('login');
             } catch (error) {
-                console.error('Erreur d\'inscription:', error);
+                // message d'erreur déjà géré par Api.call
             }
         });
 
@@ -174,7 +174,7 @@ const App = {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const page = e.target.getAttribute('data-page');
-                this.loadPage(page);
+                App.loadPage(page);
             });
         });
     },
@@ -322,8 +322,7 @@ const App = {
         } catch (error) {
             console.error('Erreur lors du chargement des livres:', error);
             UI.setContent(`<p>Erreur lors du chargement des livres. Veuillez réessayer.</p>`);
-        }
-    },
+        }    },
 
     // Affiche les détails d'un livre
     viewBookDetails: async function(bookId) {
@@ -331,10 +330,15 @@ const App = {
         try {
             const book = await Api.getBook(bookId);
             const user = Auth.getUser();
+            
+            // Debug pour vérifier l'utilisateur
+            console.log('User:', user);
+            console.log('Is admin:', user && user.is_admin);
 
             let html = `
-                <div class="book-details">
-                    <h2>${book.title}</h2>
+                <div class="book-details">                    <div>
+                        <h2 style="margin: 0;">${book.title}</h2>
+                    </div>
                     <div class="book-info">
                         <p><strong>Auteur:</strong> ${book.author}</p>
                         <p><strong>ISBN:</strong> ${book.isbn}</p>
@@ -343,17 +347,30 @@ const App = {
                         <p><strong>Langue:</strong> ${book.language || 'Non spécifiée'}</p>
                         <p><strong>Pages:</strong> ${book.pages || 'Non spécifié'}</p>
                         <p><strong>Quantité disponible:</strong> ${book.quantity}</p>
-                    </div>
-                    <div class="book-description">
+                    </div>                    <div class="book-description">
                         <h3>Description</h3>
                         <p>${book.description || 'Aucune description disponible.'}</p>
                     </div>
             `;
 
-            // Si admin, afficher le formulaire d'édition
+            // Bouton d'emprunt pour les utilisateurs normaux
+            if (user && !user.is_admin && book.quantity > 0) {
+                html += `
+                    <div class="borrow-section">
+                        <button class="btn" id="borrow-book-btn">Emprunter ce livre</button>
+                    </div>
+                `;
+            } else if (user && !user.is_admin && book.quantity === 0) {
+                html += `
+                    <div class="borrow-section">
+                        <p style="color: #e74c3c; font-weight: bold;">Ce livre n'est pas disponible actuellement.</p>
+                    </div>
+                `;
+            }
+
             if (user && user.is_admin) {
                 html += `
-                    <h3>Modifier le livre</h3>
+                    <h3 style="margin: 0;">Modifier le livre</h3>
                     <form id="edit-book-form">
                         <div class="form-group">
                             <label for="edit-title">Titre</label>
@@ -386,69 +403,53 @@ const App = {
                         <div class="form-group">
                             <label for="edit-quantity">Quantité d'exemplaires</label>
                             <input type="number" id="edit-quantity" class="form-control" value="${book.quantity}" min="0" required>
-                        </div>
-                        <div class="form-group">
+                        </div>                        <div class="form-group">
                             <label for="edit-description">Description</label>
                             <textarea id="edit-description" class="form-control">${book.description || ''}</textarea>
                         </div>
-                        <button type="submit" class="btn">Enregistrer</button>
+                        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                            <button type="submit" class="btn">Enregistrer</button>
+                            <button type="button" class="btn btn-danger" id="delete-book-form-btn">Supprimer le livre</button>
+                        </div>
                     </form>
                 `;
             }
 
-            // Formulaire d'emprunt
-            if (user && !user.is_admin && book.quantity > 0) {
-                html += `
-                    <form id="borrow-form">
-                        <button type="submit" class="btn">Emprunter ce livre</button>
-                    </form>
-                `;
-            }
-
-            html += `<button class="btn mt-20" onclick="App.loadPage('books')">Retour à la liste</button></div>`;
-
-            UI.setContent(html);
-
-            // Handler pour l'édition (admin uniquement)
+            html += `<button class="btn mt-20" onclick="App.loadBooksPage()">Retour à la liste</button></div>`;            UI.setContent(html);            // --- Handler pour le bouton supprimer dans le formulaire ---
             if (user && user.is_admin) {
-                document.getElementById('edit-book-form').addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    const data = {
-                        title: document.getElementById('edit-title').value,
-                        author: document.getElementById('edit-author').value,
-                        isbn: document.getElementById('edit-isbn').value,
-                        publication_year: parseInt(document.getElementById('edit-publication-year').value),
-                        publisher: document.getElementById('edit-publisher').value,
-                        language: document.getElementById('edit-language').value,
-                        pages: parseInt(document.getElementById('edit-pages').value),
-                        quantity: parseInt(document.getElementById('edit-quantity').value),
-                        description: document.getElementById('edit-description').value
-                    };
-                    try {
-                        await Api.updateBook(book.id, data);
-                        UI.showMessage('Livre modifié avec succès', 'success');
-                        App.viewBookDetails(book.id); // recharge la page
-                    } catch (error) {
-                        // message d'erreur déjà géré par Api.call
-                    }
-                });
+                // Handler pour le bouton supprimer dans le formulaire
+                const deleteFormBtn = document.getElementById('delete-book-form-btn');
+                if (deleteFormBtn) {
+                    deleteFormBtn.addEventListener('click', async function(e) {
+                        e.preventDefault();
+                        if (confirm("Voulez-vous vraiment supprimer ce livre ?")) {
+                            await Api.deleteBook(book.id);
+                            UI.showMessage('Livre supprimé avec succès', 'success');
+                            App.loadBooksPage();
+                        }
+                    });
+                }
             }
 
-            // Handler pour l'emprunt
-            if (user && !user.is_admin && book.quantity > 0) {
-                document.getElementById('borrow-form').addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    try {
-                        await Api.borrowBook(book.id);
-                        UI.showMessage('Livre emprunté avec succès !', 'success');
-                        App.viewBookDetails(book.id); // recharge la page
-                    } catch (error) {
-                        // message d'erreur déjà géré par Api.call
-                    }
-                });
+            // --- Handler pour le bouton d'emprunt ---
+            if (user && !user.is_admin) {
+                const borrowBtn = document.getElementById('borrow-book-btn');
+                if (borrowBtn) {
+                    borrowBtn.addEventListener('click', async function(e) {
+                        e.preventDefault();
+                        try {
+                            await Api.borrowBook(book.id);
+                            UI.showMessage('Livre emprunté avec succès !', 'success');
+                            App.viewBookDetails(book.id); // Recharger pour mettre à jour la quantité
+                        } catch (error) {
+                            // L'erreur est déjà affichée par Api.call
+                        }
+                    });
+                }
             }
 
             UI.hideLoading();
+
         } catch (error) {
             UI.setContent(`<p>Erreur lors du chargement des détails du livre.</p>`);
             UI.hideLoading();
@@ -566,7 +567,7 @@ const App = {
                 await Api.call('/users/me', 'PUT', userData);
                 await Api.getCurrentUser();
                 UI.showMessage('Profil mis à jour avec succès', 'success');
-                this.loadPage('profile');
+                App.loadPage('profile');
             } catch (error) {
                 console.error('Erreur lors de la mise à jour du profil:', error);
             }
@@ -725,9 +726,7 @@ const App = {
             App.loadBooksPage();
         });
         document.getElementById('sort-by').value = sortBy;
-    },
-
-    // Charge la page des emprunts
+    },    // Charge la page des emprunts
     loadLoansPage: async function() {
         UI.showLoading();
         try {
@@ -735,6 +734,10 @@ const App = {
             let html = `<h2 class="mb-20">Mes emprunts</h2><div class="card-container">`;
 
             if (user && user.is_admin) {
+                // Variables de tri spécifiques aux emprunts (par défaut : date d'emprunt décroissante)
+                let sortBy = "loan_date";
+                let sortDesc = true;
+
                 html = `
         <h2 class="mb-20">Tous les emprunts</h2>
         <form id="search-loans-form" class="mb-20">
@@ -824,15 +827,16 @@ const App = {
                     // Met à jour la sélection et la flèche au chargement
                     document.getElementById('sort-loans-by').value = sortBy;
                     document.getElementById('sort-loans-dir').textContent = sortDesc ? "⬇️" : "⬆️";
-                }, 0);
-
-            } else if (user) {
+                }, 0);            } else if (user) {
                 // UTILISATEUR : voir seulement ses emprunts, sans bouton retourner
                 const loans = await Api.getUserLoans();
                 if (!loans || loans.length === 0) {
                     html += `<p>Vous n'avez aucun emprunt en cours.</p>`;
                 } else {
-                    loans.forEach(loan => {
+                    // Trier les emprunts par date d'emprunt décroissante (plus récent en premier)
+                    const sortedLoans = loans.sort((a, b) => new Date(b.loan_date) - new Date(a.loan_date));
+                    
+                    sortedLoans.forEach(loan => {
                         html += `
                             <div class="card">
                                 <div class="card-header">
@@ -917,7 +921,10 @@ const App = {
                             <label for="edit-description">Description</label>
                             <textarea id="edit-description" class="form-control">${book.description || ''}</textarea>
                         </div>
-                        <button type="submit" class="btn">Enregistrer</button>
+                        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                            <button type="submit" class="btn">Enregistrer</button>
+                            <button type="button" class="btn btn-danger" id="delete-book-btn">Supprimer le livre</button>
+                        </div>
                     </form>
                 </div>
             `;
@@ -999,6 +1006,19 @@ const App = {
                     // message d'erreur déjà géré par Api.call
                 }
             });
+
+            // Handler suppression
+            const deleteBtn = document.getElementById('delete-book-btn');
+            if (deleteBtn) {
+                deleteBtn.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    if (confirm("Voulez-vous vraiment supprimer ce livre ?")) {
+                        await Api.deleteBook(book.id);
+                        UI.showMessage('Livre supprimé avec succès', 'success');
+                        App.loadBooksPage();
+                    }
+                });
+            }
         } catch (error) {
             console.error('Erreur lors du chargement des détails du livre:', error);
             UI.setContent(`
@@ -1146,8 +1166,8 @@ const App = {
 
 // Variables globales pour la pagination et le tri
 let currentPage = 1;
-let sortBy = "loan_date";
-let sortDesc = true; // Tri décroissant par défaut (plus récents en premier)
+let sortBy = "title";
+let sortDesc = false;
 let lastSearchParams = {};
 
 // Initialiser l'application au chargement de la page

@@ -151,4 +151,8 @@ const Api = {
     createBook: async function(data) {
         return this.call('/books/', 'POST', data);
     },
+
+    deleteBook: async function(id) {
+        return this.call(`/books/${id}`, 'DELETE');
+    },
 };
